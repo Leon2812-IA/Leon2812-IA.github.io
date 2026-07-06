@@ -659,7 +659,14 @@ html[data-tema="oscuro"] .buscador-vehiculo{background:rgba(31,31,31,.97)}
 .cat-tile:hover{transform:translateY(-4px);box-shadow:var(--sombra-fuerte);border-color:var(--rojo)}
 .cat-tile .cat-ico{width:56px;height:56px;margin:0 auto 10px;border-radius:50%;display:grid;place-items:center;font-size:1.5rem}
 .cat-tile .cat-nom{font-family:var(--fuente-titulo);font-weight:700;font-size:.85rem;line-height:1.2}
-.cat-tile .cat-cnt{font-size:.72rem;color:var(--texto-suave);margin-top:3px}
+.cat-tile .cat-cnt{font-size:.72rem;color:var(--texto-suave);margin-top:3px;display:flex;align-items:center;justify-content:center;gap:5px}
+.subs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:12px}
+.sub-tile{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--superficie);border:1px solid var(--borde);border-radius:10px;padding:13px 16px;cursor:pointer;transition:all var(--trans);font-family:var(--fuente-titulo);font-weight:600;font-size:.88rem}
+.sub-tile:hover{border-color:var(--rojo);color:var(--rojo);transform:translateX(3px)}
+.sub-tile .sub-cnt{background:var(--gris-100);color:var(--texto-suave);font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:12px;min-width:26px;text-align:center;flex-shrink:0}
+.sub-tile:hover .sub-cnt{background:var(--rojo);color:#fff}
+.btn-volver-cats{background:var(--gris-100);color:var(--texto);padding:9px 16px;border-radius:9px;font-weight:700;font-size:.85rem;display:flex;align-items:center;gap:8px;transition:all var(--trans);align-self:center}
+.btn-volver-cats:hover{background:var(--rojo);color:#fff}
 /* Migas de pan */
 .migas{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--texto-suave);margin-bottom:18px;flex-wrap:wrap}
 .migas a{color:var(--texto-suave);transition:color var(--trans)}
@@ -850,11 +857,7 @@ html[data-tema="oscuro"] .buscador-vehiculo{background:rgba(31,31,31,.97)}
      ===================================================================== -->
 <section class="seccion" id="seccionCategorias" style="padding-bottom:0">
   <div class="contenedor">
-    <div class="seccion-cabecera">
-      <h2 class="seccion-titulo">Comprar por categoría
-        <small>Encuentra la pieza por su tipo</small>
-      </h2>
-    </div>
+    <div class="seccion-cabecera" id="catsCabecera"></div>
     <div class="cats-grid" id="catsGrid"></div>
   </div>
 </section>
@@ -1068,6 +1071,24 @@ const CATEGORIAS = [
   {id:'refrigeracion',nombre:'Refrigeración', icono:'fa-temperature-low',color:'#2980b9'},
   {id:'transmision',  nombre:'Transmisión',   icono:'fa-gears',          color:'#c0392b'}
 ];
+
+
+/* --- Subcategorías por categoría (estilo autodoc: categoría -> tipos de pieza). Las que tienen
+   producto en el catálogo van primero; el resto dan riqueza al árbol como en una tienda real. --- */
+const SUBCATEGORIAS = {
+  frenos:[{id:'pastillas-freno',nombre:'Pastillas de freno'},{id:'discos-freno',nombre:'Discos de freno'},{id:'kit-freno',nombre:'Kit de discos y pastillas'},{id:'pinzas-freno',nombre:'Pinzas de freno'},{id:'tambores-freno',nombre:'Tambores de freno'},{id:'latiguillos',nombre:'Latiguillos de freno'},{id:'liquido-frenos',nombre:'Líquido de frenos'},{id:'servofreno',nombre:'Servofreno'}],
+  motor:[{id:'correa-distribucion',nombre:'Correa de distribución'},{id:'junta-culata',nombre:'Junta de culata'},{id:'turbocompresor',nombre:'Turbocompresor'},{id:'bomba-aceite',nombre:'Bomba de aceite'},{id:'kit-distribucion',nombre:'Kit de distribución'},{id:'tensor-correa',nombre:'Tensor de correa'},{id:'arbol-levas',nombre:'Árbol de levas'},{id:'cadena-distribucion',nombre:'Cadena de distribución'}],
+  suspension:[{id:'amortiguadores',nombre:'Amortiguadores'},{id:'rotula-suspension',nombre:'Rótulas de suspensión'},{id:'brazo-suspension',nombre:'Brazos de suspensión'},{id:'muelles',nombre:'Muelles de suspensión'},{id:'silentblocks',nombre:'Silentblocks'},{id:'cojinete-amortiguador',nombre:'Cojinete de amortiguador'},{id:'barra-estabilizadora',nombre:'Barra estabilizadora'}],
+  filtros:[{id:'filtro-aceite',nombre:'Filtro de aceite'},{id:'filtro-aire',nombre:'Filtro de aire'},{id:'filtro-combustible',nombre:'Filtro de combustible'},{id:'filtro-habitaculo',nombre:'Filtro de habitáculo'},{id:'filtro-secador',nombre:'Filtro secador'}],
+  embrague:[{id:'kit-embrague',nombre:'Kit de embrague'},{id:'volante-motor',nombre:'Volante motor / bimasa'},{id:'cilindro-receptor',nombre:'Cilindro receptor'},{id:'cilindro-emisor',nombre:'Cilindro emisor'},{id:'cojinete-embrague',nombre:'Cojinete de embrague'},{id:'disco-embrague',nombre:'Disco de embrague'}],
+  electrico:[{id:'bujias-encendido',nombre:'Bujías de encendido'},{id:'bateria',nombre:'Baterías'},{id:'bobina-encendido',nombre:'Bobinas de encendido'},{id:'sensores',nombre:'Sensores'},{id:'alternador',nombre:'Alternador'},{id:'motor-arranque',nombre:'Motor de arranque'},{id:'bujias-calentamiento',nombre:'Bujías de calentamiento'}],
+  carroceria:[{id:'faro-delantero',nombre:'Faro delantero'},{id:'faro-trasero',nombre:'Faro trasero'},{id:'espejo-retrovisor',nombre:'Espejo retrovisor'},{id:'parachoques',nombre:'Parachoques'},{id:'capo',nombre:'Capó'},{id:'aletas',nombre:'Aletas'},{id:'intermitentes',nombre:'Intermitentes'},{id:'rejillas',nombre:'Rejillas y molduras'}],
+  escape:[{id:'silenciador',nombre:'Silenciador'},{id:'catalizador',nombre:'Catalizador'},{id:'tubo-escape',nombre:'Tubo de escape'},{id:'sonda-lambda',nombre:'Sonda lambda'},{id:'colector-escape',nombre:'Colector de escape'},{id:'filtro-particulas',nombre:'Filtro de partículas'}],
+  refrigeracion:[{id:'radiador',nombre:'Radiador'},{id:'bomba-agua',nombre:'Bomba de agua'},{id:'termostato',nombre:'Termostato'},{id:'ventilador',nombre:'Ventilador'},{id:'manguitos',nombre:'Manguitos'},{id:'deposito-refrigerante',nombre:'Depósito refrigerante'},{id:'sensor-temperatura',nombre:'Sensor de temperatura'}],
+  transmision:[{id:'palier',nombre:'Palier / transmisión'},{id:'cremallera-direccion',nombre:'Cremallera de dirección'},{id:'bomba-direccion',nombre:'Bomba de dirección'},{id:'junta-homocinetica',nombre:'Junta homocinética'},{id:'terminal-direccion',nombre:'Terminal de dirección'},{id:'cardan',nombre:'Cardán'}]
+};
+/* Producto -> subcategoría */
+const MAPA_SUB = {1:'pastillas-freno',2:'discos-freno',3:'kit-embrague',4:'filtro-aceite',5:'filtro-aire',6:'amortiguadores',7:'bujias-encendido',8:'bateria',9:'correa-distribucion',10:'bomba-agua',11:'radiador',12:'silenciador',13:'catalizador',14:'kit-freno',15:'bobina-encendido',16:'sensores',17:'rotula-suspension',18:'brazo-suspension',19:'filtro-combustible',20:'filtro-habitaculo',21:'volante-motor',22:'cilindro-receptor',23:'bomba-aceite',24:'junta-culata',25:'turbocompresor',26:'termostato',27:'ventilador',28:'espejo-retrovisor',29:'faro-delantero',30:'palier',31:'cremallera-direccion',32:'bomba-direccion'};
 
 /* --- Marcas de repuestos --- */
 const MARCAS_REPUESTO = ['Bosch','Valeo','Brembo','Monroe','Gates','Mann-Filter','Sachs','Denso','NGK','Contitech'];
@@ -1560,22 +1581,57 @@ const App = {
       `<li><a href="#catalogo" onclick="Catalogo.filtrarPorCategoria('${c.id}')"><i class="fa-solid fa-chevron-right"></i> ${c.nombre}</a></li>`
     ).join('');
   },
-  // Rejilla "Comprar por categoría" (home)
-  renderCategorias(){
-    document.getElementById('catsGrid').innerHTML = CATEGORIAS.map(c=>{
-      const n = Estado.productos.filter(p=>p.categoria===c.id).length;
-      return `<div class="cat-tile" onclick="Catalogo.filtrarPorCategoria('${c.id}')">
-        <div class="cat-ico" style="background:${c.color}22;color:${c.color}"><i class="fa-solid ${c.icono}"></i></div>
-        <div class="cat-nom">${c.nombre}</div>
-        <div class="cat-cnt">${n} productos</div>
-      </div>`;
-    }).join('');
-  }
+  // Rejilla "Comprar por categoría" (delega en el módulo Categorias)
+  renderCategorias(){ Categorias.render(); }
 };
 
 /* =========================================================================
    ============  BUSCADOR POR VEHÍCULO  ====================================
    ========================================================================= */
+/* =========================================================================
+   ============  CATEGORÍAS Y SUBCATEGORÍAS (desglose tipo autodoc)  =======
+   ========================================================================= */
+const Categorias = {
+  vista:'principal', // 'principal' o un id de categoría
+  render(){
+    const cab=document.getElementById('catsCabecera');
+    const grid=document.getElementById('catsGrid');
+    if(this.vista==='principal'){
+      grid.className='cats-grid';
+      cab.innerHTML=`<h2 class="seccion-titulo">Comprar por categoría<small>Elige una categoría para ver sus tipos de pieza</small></h2>`;
+      grid.innerHTML=CATEGORIAS.map(c=>{
+        const n=Estado.productos.filter(p=>p.categoria===c.id).length;
+        return `<div class="cat-tile" onclick="Categorias.abrir('${c.id}')">
+          <div class="cat-ico" style="background:${c.color}22;color:${c.color}"><i class="fa-solid ${c.icono}"></i></div>
+          <div class="cat-nom">${c.nombre}</div>
+          <div class="cat-cnt">${n} productos <i class="fa-solid fa-chevron-right" style="font-size:.65rem"></i></div>
+        </div>`;
+      }).join('');
+    } else {
+      const c=Util.categoria(this.vista);
+      const subs=SUBCATEGORIAS[this.vista]||[];
+      grid.className='subs-grid';
+      cab.innerHTML=`<h2 class="seccion-titulo"><i class="fa-solid ${c.icono}" style="color:${c.color};-webkit-text-fill-color:${c.color};margin-right:8px"></i>${c.nombre}<small>Elige el tipo de pieza</small></h2>
+        <button class="btn-volver-cats" onclick="Categorias.volver()"><i class="fa-solid fa-arrow-left"></i> Todas las categorías</button>`;
+      grid.innerHTML=subs.map(s=>{
+        const n=Estado.productos.filter(p=>MAPA_SUB[p.id]===s.id).length;
+        return `<div class="sub-tile" onclick="Categorias.filtrarSub('${this.vista}','${s.id}',this.querySelector('.sub-nom').textContent)">
+          <span class="sub-nom">${s.nombre}</span><span class="sub-cnt">${n}</span></div>`;
+      }).join('');
+    }
+  },
+  abrir(catId){ this.vista=catId; this.render(); document.getElementById('seccionCategorias').scrollIntoView({behavior:'smooth'}); },
+  volver(){ this.vista='principal'; this.render(); },
+  filtrarSub(catId,subId,nombre){
+    Catalogo.limpiarFiltrosSilencioso();
+    Catalogo.filtros.categorias=[catId];
+    Catalogo.filtros.sub=subId; Catalogo.filtros.subNombre=nombre;
+    const chk=document.querySelector(`#filtroCategorias input[value="${catId}"]`); if(chk)chk.checked=true;
+    Catalogo.render();
+    document.getElementById('catalogo').scrollIntoView({behavior:'smooth'});
+  }
+};
+
 /* =========================================================================
    ============  MI GARAJE (vehículo guardado)  ===========================
    ========================================================================= */
@@ -1648,6 +1704,7 @@ const BuscadorVehiculo = {
     const anio = document.getElementById('bvAnio').value;
     if(!marca || !modelo){ Toast.error('Selecciona al menos marca y modelo'); return; }
     Estado.filtroVehiculo = {marca, modelo, anio: anio||null};
+    Catalogo.filtros.sub=null; Catalogo.filtros.subNombre='';
     Garaje.guardar(Estado.filtroVehiculo);
     Estado.filtroBusqueda = '';
     document.getElementById('buscadorTexto').value = '';
@@ -1704,6 +1761,7 @@ const Buscador = {
     document.getElementById('autocompletado').classList.add('oculto');
     Estado.filtroBusqueda = texto.trim();
     Estado.filtroVehiculo = null;
+    Catalogo.filtros.sub=null; Catalogo.filtros.subNombre='';
     document.getElementById('vehiculoActivo').classList.remove('visible');
     Catalogo.render();
     document.getElementById('catalogo').scrollIntoView({behavior:'smooth'});
@@ -1715,7 +1773,7 @@ const Buscador = {
    ============  CATÁLOGO (filtros, orden, render)  ========================
    ========================================================================= */
 const Catalogo = {
-  filtros:{ categorias:[], marcas:[], precioMin:0, precioMax:450 },
+  filtros:{ categorias:[], marcas:[], precioMin:0, precioMax:450, sub:null, subNombre:'' },
 
   // Construye las opciones de filtro (categorías y marcas) con su conteo
   initFiltros(){
@@ -1739,6 +1797,7 @@ const Catalogo = {
   toggleCategoria(id, on){
     if(on) this.filtros.categorias.push(id);
     else this.filtros.categorias = this.filtros.categorias.filter(x=>x!==id);
+    this.filtros.sub=null; this.filtros.subNombre='';
     this.render();
   },
   toggleMarca(m, on){
@@ -1780,6 +1839,9 @@ const Catalogo = {
     // Filtro por marca del repuesto
     if(this.filtros.marcas.length)
       lista = lista.filter(p=>this.filtros.marcas.includes(p.marca));
+    // Filtro por subcategoría (tipo de pieza)
+    if(this.filtros.sub)
+      lista = lista.filter(p=>MAPA_SUB[p.id]===this.filtros.sub);
     // Filtro por precio
     lista = lista.filter(p=>p.precio>=this.filtros.precioMin && p.precio<=this.filtros.precioMax);
     // Ordenamiento
@@ -1798,7 +1860,7 @@ const Catalogo = {
     let sub = 'Todas las categorías';
     if(Estado.filtroVehiculo){ const v=Estado.filtroVehiculo; sub=`Compatibles con ${v.marca} ${v.modelo}${v.anio?' '+v.anio:''}`; }
     else if(Estado.filtroBusqueda){ sub=`Búsqueda: "${Estado.filtroBusqueda}"`; }
-    else if(this.filtros.categorias.length===1){ sub=Util.categoria(this.filtros.categorias[0]).nombre; }
+    else if(this.filtros.categorias.length===1){ sub=Util.categoria(this.filtros.categorias[0]).nombre; if(this.filtros.subNombre) sub+=' › '+this.filtros.subNombre; }
     document.getElementById('catalogoSubtitulo').textContent = sub;
     const migas=document.getElementById('migas');
     if(migas) migas.innerHTML=`<a href="#" onclick="App.irInicio();return false">Inicio</a><i class="fa-solid fa-chevron-right"></i><a href="#catalogo">Catálogo</a><i class="fa-solid fa-chevron-right"></i><span class="actual">${sub}</span>`;
@@ -1863,7 +1925,7 @@ const Catalogo = {
   },
   // Filtros: limpiar todo
   limpiarFiltros(){
-    this.filtros = {categorias:[],marcas:[],precioMin:0,precioMax:450};
+    this.filtros = {categorias:[],marcas:[],precioMin:0,precioMax:450,sub:null,subNombre:''};
     document.querySelectorAll('#filtroCategorias input,#filtroMarcas input').forEach(i=>i.checked=false);
     document.getElementById('precioMin').value=0;
     document.getElementById('precioMax').value=450;
@@ -1882,7 +1944,7 @@ const Catalogo = {
     document.getElementById('catalogo').scrollIntoView({behavior:'smooth'});
   },
   limpiarFiltrosSilencioso(){
-    this.filtros={categorias:[],marcas:[],precioMin:0,precioMax:450};
+    this.filtros={categorias:[],marcas:[],precioMin:0,precioMax:450,sub:null,subNombre:''};
     document.querySelectorAll('#filtroCategorias input,#filtroMarcas input').forEach(i=>i.checked=false);
     document.getElementById('precioMin').value=0; document.getElementById('precioMax').value=450;
     Estado.filtroBusqueda=''; Estado.filtroVehiculo=null;
