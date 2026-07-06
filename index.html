@@ -1,0 +1,2647 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Repuestos Guaicaipuro — Repuestos de calidad para tu vehículo</title>
+<!-- ====== FUENTES (Google Fonts): Montserrat para títulos, Open Sans para texto ====== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- ====== ICONOS: Font Awesome ====== -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+/* =========================================================================
+   VARIABLES DE TEMA — colores corporativos (rojo #CC0000, blanco, grises)
+   ========================================================================= */
+:root{
+  --rojo:#CC0000; --rojo-osc:#a30000; --rojo-claro:#ff1a1a;
+  --negro:#1a1a1a; --carbon:#232323; --grafito:#2e2e2e;
+  --gris-900:#333; --gris-700:#555; --gris-500:#888; --gris-300:#c9c9c9;
+  --gris-200:#e4e4e4; --gris-100:#f2f2f2; --gris-50:#f8f8f8;
+  --blanco:#ffffff;
+  --verde:#1e9e4a; --amarillo:#e8a300; --azul:#1565c0;
+  /* superficies (tema claro por defecto) */
+  --bg:#f4f5f7; --superficie:#ffffff; --superficie-2:#f8f8f8;
+  --texto:#1f1f1f; --texto-suave:#5b5b5b; --borde:#e2e2e2;
+  --header-bg:#ffffff; --topbar-bg:#1a1a1a; --topbar-txt:#e8e8e8;
+  --footer-bg:#1a1a1a; --footer-txt:#c7c7c7;
+  --sombra:0 4px 14px rgba(0,0,0,.08); --sombra-fuerte:0 12px 40px rgba(0,0,0,.18);
+  --radio:12px; --radio-sm:8px;
+  --fuente-titulo:'Montserrat',sans-serif; --fuente-texto:'Open Sans',sans-serif;
+  --trans:.25s cubic-bezier(.4,0,.2,1);
+}
+/* ---- Tema oscuro ---- */
+html[data-tema="oscuro"]{
+  --bg:#141414; --superficie:#1f1f1f; --superficie-2:#262626;
+  --texto:#ececec; --texto-suave:#a5a5a5; --borde:#353535;
+  --header-bg:#1b1b1b; --topbar-bg:#000; --topbar-txt:#d0d0d0;
+  --footer-bg:#0d0d0d; --footer-txt:#b0b0b0;
+  --gris-100:#2a2a2a; --gris-50:#242424; --gris-200:#333;
+  --sombra:0 4px 14px rgba(0,0,0,.4); --sombra-fuerte:0 12px 40px rgba(0,0,0,.6);
+}
+/* =========================================================================
+   RESET Y BASE
+   ========================================================================= */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--fuente-texto); background:var(--bg); color:var(--texto);
+  line-height:1.55; transition:background var(--trans),color var(--trans);
+  overflow-x:hidden;
+}
+h1,h2,h3,h4,h5{font-family:var(--fuente-titulo);line-height:1.15;font-weight:800}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+img{max-width:100%;display:block}
+ul{list-style:none}
+input,select,textarea{font-family:inherit;font-size:1rem}
+.contenedor{max-width:1280px;margin:0 auto;padding:0 20px}
+.oculto{display:none!important}
+/* Scrollbar sutil */
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-thumb{background:var(--gris-300);border-radius:6px}
+::-webkit-scrollbar-thumb:hover{background:var(--gris-500)}
+
+/* =========================================================================
+   BARRA SUPERIOR FINA (teléfono, email, horario)
+   ========================================================================= */
+.topbar{background:var(--topbar-bg);color:var(--topbar-txt);font-size:.82rem;padding:7px 0}
+.topbar .contenedor{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.topbar-info{display:flex;gap:22px;flex-wrap:wrap}
+.topbar-info span{display:inline-flex;align-items:center;gap:7px}
+.topbar-info i{color:var(--rojo-claro)}
+.topbar-social a{margin-left:12px;color:var(--topbar-txt);transition:color var(--trans)}
+.topbar-social a:hover{color:var(--rojo-claro)}
+
+/* =========================================================================
+   HEADER STICKY (logo, buscador texto, iconos)
+   ========================================================================= */
+.header{position:sticky;top:0;z-index:900;background:var(--header-bg);
+  box-shadow:0 2px 12px rgba(0,0,0,.08);transition:background var(--trans)}
+.header-main{display:flex;align-items:center;gap:26px;padding:14px 0}
+/* Logo */
+.logo{display:flex;align-items:center;gap:11px;flex-shrink:0}
+.logo-img{height:52px;width:auto;background:#fff;border-radius:9px;padding:5px 10px;
+  box-shadow:0 2px 8px rgba(0,0,0,.12);transition:transform var(--trans)}
+.logo:hover .logo-img{transform:scale(1.03)}
+.logo-img-footer{height:56px;padding:7px 12px}
+.logo-icono{width:46px;height:46px;background:var(--rojo);border-radius:11px;
+  display:grid;place-items:center;color:#fff;font-size:1.5rem;
+  box-shadow:0 4px 12px rgba(204,0,0,.35);transform:rotate(-4deg)}
+.logo-txt strong{font-family:var(--fuente-titulo);font-weight:900;font-size:1.28rem;
+  display:block;letter-spacing:-.5px;line-height:1}
+.logo-txt strong .g1{color:var(--rojo)}
+.logo-txt small{font-size:.66rem;letter-spacing:2px;text-transform:uppercase;
+  color:var(--texto-suave);font-weight:600}
+/* Buscador de texto con autocompletado */
+.buscador{flex:1;position:relative;max-width:560px}
+.buscador-caja{display:flex;border:2px solid var(--borde);border-radius:30px;
+  overflow:hidden;background:var(--superficie);transition:border-color var(--trans)}
+.buscador-caja:focus-within{border-color:var(--rojo)}
+.buscador-caja input{flex:1;border:none;background:transparent;padding:11px 20px;
+  color:var(--texto);outline:none}
+.buscador-caja button{background:var(--rojo);color:#fff;padding:0 22px;font-size:1rem;
+  transition:background var(--trans)}
+.buscador-caja button:hover{background:var(--rojo-osc)}
+.autocompletado{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--superficie);
+  border-radius:var(--radio-sm);box-shadow:var(--sombra-fuerte);overflow:hidden;z-index:50;
+  border:1px solid var(--borde)}
+.autocompletado button{display:flex;width:100%;align-items:center;gap:12px;padding:10px 16px;
+  text-align:left;transition:background var(--trans);border-bottom:1px solid var(--borde)}
+.autocompletado button:last-child{border-bottom:none}
+.autocompletado button:hover{background:var(--gris-100)}
+.autocompletado .ac-img{width:34px;height:34px;border-radius:6px;flex-shrink:0}
+.autocompletado .ac-nom{font-size:.9rem;font-weight:600}
+.autocompletado .ac-ref{font-size:.74rem;color:var(--texto-suave)}
+.autocompletado .ac-precio{margin-left:auto;color:var(--rojo);font-weight:700;font-size:.9rem}
+/* Acciones (usuario, favoritos, carrito, tema) */
+.header-acciones{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.icono-btn{position:relative;width:44px;height:44px;border-radius:50%;display:grid;
+  place-items:center;font-size:1.15rem;color:var(--texto);transition:all var(--trans)}
+.icono-btn:hover{background:var(--gris-100);color:var(--rojo)}
+.contador{position:absolute;top:2px;right:0;background:var(--rojo);color:#fff;font-size:.68rem;
+  font-weight:700;min-width:19px;height:19px;border-radius:10px;display:grid;place-items:center;
+  padding:0 4px;font-family:var(--fuente-titulo);border:2px solid var(--header-bg)}
+.contador:empty,.contador[data-n="0"]{display:none}
+
+/* =========================================================================
+   HERO + BUSCADOR POR VEHÍCULO
+   ========================================================================= */
+.hero{position:relative;background:linear-gradient(120deg,#1a1a1a 0%,#2a0000 55%,#4a0000 100%);
+  color:#fff;overflow:hidden;padding:56px 0 66px}
+.hero::before{content:"";position:absolute;inset:0;opacity:.09;
+  background-image:repeating-linear-gradient(45deg,#fff 0 2px,transparent 2px 22px);pointer-events:none}
+.hero::after{content:"\f1b9";font-family:"Font Awesome 6 Free";font-weight:900;
+  position:absolute;right:-30px;bottom:-40px;font-size:20rem;color:rgba(255,255,255,.04);
+  transform:rotate(-12deg);pointer-events:none}
+.hero .contenedor{position:relative;z-index:2}
+.hero-txt{max-width:640px}
+.hero h1{font-size:clamp(1.9rem,4vw,3rem);font-weight:900;line-height:1.05;margin-bottom:14px}
+.hero h1 span{color:var(--rojo-claro)}
+.hero p{font-size:1.08rem;opacity:.9;margin-bottom:8px;max-width:540px}
+/* Caja del buscador de vehículo */
+.buscador-vehiculo{margin-top:30px;background:rgba(255,255,255,.97);border-radius:16px;
+  padding:22px;box-shadow:0 20px 50px rgba(0,0,0,.35);max-width:900px}
+html[data-tema="oscuro"] .buscador-vehiculo{background:rgba(31,31,31,.97)}
+.bv-titulo{display:flex;align-items:center;gap:10px;color:var(--texto);font-family:var(--fuente-titulo);
+  font-weight:800;font-size:1.05rem;margin-bottom:16px}
+.bv-titulo i{color:var(--rojo)}
+.bv-grid{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:12px;align-items:end}
+.bv-campo label{display:block;font-size:.76rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.5px;color:var(--texto-suave);margin-bottom:5px}
+.bv-campo select{width:100%;padding:12px 14px;border:2px solid var(--borde);border-radius:9px;
+  background:var(--superficie);color:var(--texto);cursor:pointer;transition:border-color var(--trans)}
+.bv-campo select:focus{outline:none;border-color:var(--rojo)}
+.bv-campo select:disabled{opacity:.5;cursor:not-allowed}
+.btn-buscar-coche{background:var(--rojo);color:#fff;padding:13px 22px;border-radius:9px;
+  font-family:var(--fuente-titulo);font-weight:700;display:flex;align-items:center;gap:9px;
+  white-space:nowrap;transition:all var(--trans)}
+.btn-buscar-coche:hover{background:var(--rojo-osc);transform:translateY(-2px)}
+/* Chip de vehículo activo */
+.vehiculo-activo{display:none;margin-top:14px;background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.3);border-radius:30px;padding:8px 8px 8px 18px;
+  align-items:center;gap:12px;font-size:.92rem;width:fit-content}
+.vehiculo-activo.visible{display:flex}
+.vehiculo-activo button{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.2);
+  color:#fff;display:grid;place-items:center;transition:background var(--trans)}
+.vehiculo-activo button:hover{background:var(--rojo)}
+
+/* =========================================================================
+   SECCIONES GENERALES
+   ========================================================================= */
+.seccion{padding:48px 0}
+.seccion-cabecera{display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:26px;gap:16px;flex-wrap:wrap}
+.seccion-titulo{font-size:1.7rem;font-weight:900;position:relative;padding-left:16px}
+.seccion-titulo::before{content:"";position:absolute;left:0;top:5px;bottom:5px;width:5px;
+  background:var(--rojo);border-radius:3px}
+.seccion-titulo small{display:block;font-family:var(--fuente-texto);font-weight:400;
+  font-size:.85rem;color:var(--texto-suave);margin-top:3px}
+
+/* =========================================================================
+   OFERTAS DEL MES
+   ========================================================================= */
+.ofertas{background:var(--superficie);border-top:1px solid var(--borde);border-bottom:1px solid var(--borde)}
+.ofertas-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+
+/* =========================================================================
+   TARJETA DE PRODUCTO
+   ========================================================================= */
+.card{background:var(--superficie);border:1px solid var(--borde);border-radius:var(--radio);
+  overflow:hidden;display:flex;flex-direction:column;position:relative;transition:all var(--trans)}
+.card:hover{transform:translateY(-6px);box-shadow:var(--sombra-fuerte);border-color:var(--rojo)}
+.card-img{position:relative;aspect-ratio:4/3;background:var(--gris-100);overflow:hidden;cursor:pointer}
+.card-img svg{width:100%;height:100%}
+.card-badges{position:absolute;top:10px;left:10px;display:flex;flex-direction:column;gap:6px;z-index:3}
+.badge{font-size:.68rem;font-weight:800;font-family:var(--fuente-titulo);padding:4px 9px;
+  border-radius:20px;color:#fff;letter-spacing:.4px;text-transform:uppercase}
+.badge-desc{background:var(--rojo)}
+.badge-top{background:var(--amarillo)}
+.card-fav{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,.92);color:var(--gris-500);display:grid;place-items:center;
+  z-index:3;transition:all var(--trans);box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.card-fav:hover{color:var(--rojo);transform:scale(1.1)}
+.card-fav.activo{color:var(--rojo)}
+.card-vista{position:absolute;inset:0;background:rgba(26,26,26,.55);color:#fff;display:grid;
+  place-items:center;opacity:0;transition:opacity var(--trans);font-family:var(--fuente-titulo);
+  font-weight:700;gap:8px;font-size:.9rem}
+.card-vista span{display:flex;align-items:center;gap:8px;background:var(--rojo);padding:9px 16px;border-radius:30px}
+.card-img:hover .card-vista{opacity:1}
+.card-cuerpo{padding:14px 15px 16px;display:flex;flex-direction:column;flex:1}
+.card-cat{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--rojo)}
+.card-nombre{font-family:var(--fuente-titulo);font-weight:700;font-size:.98rem;margin:4px 0 5px;
+  line-height:1.25;cursor:pointer;transition:color var(--trans)}
+.card-nombre:hover{color:var(--rojo)}
+.card-ref{font-size:.75rem;color:var(--texto-suave);margin-bottom:8px}
+.card-ref .marca-rep{font-weight:700;color:var(--texto)}
+.card-compat{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
+.chip-compat{font-size:.66rem;background:var(--gris-100);color:var(--texto-suave);padding:2px 8px;
+  border-radius:20px;border:1px solid var(--borde)}
+.card-stock{display:flex;align-items:center;gap:6px;font-size:.76rem;font-weight:600;margin-bottom:10px}
+.punto{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.stock-alto .punto{background:var(--verde)} .stock-alto{color:var(--verde)}
+.stock-medio .punto{background:var(--amarillo)} .stock-medio{color:var(--amarillo)}
+.stock-nulo .punto{background:var(--rojo)} .stock-nulo{color:var(--rojo)}
+.card-pie{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.card-precio{font-family:var(--fuente-titulo);font-weight:900;font-size:1.3rem;color:var(--texto)}
+.card-precio .antes{display:block;font-size:.78rem;font-weight:500;color:var(--texto-suave);
+  text-decoration:line-through;font-family:var(--fuente-texto)}
+.btn-add{background:var(--rojo);color:#fff;width:44px;height:44px;border-radius:11px;font-size:1.05rem;
+  display:grid;place-items:center;transition:all var(--trans);flex-shrink:0}
+.btn-add:hover{background:var(--rojo-osc);transform:scale(1.08)}
+.btn-add:disabled{background:var(--gris-300);cursor:not-allowed;transform:none}
+
+/* =========================================================================
+   LAYOUT DEL CATÁLOGO (filtros + grid)
+   ========================================================================= */
+.catalogo-layout{display:grid;grid-template-columns:270px 1fr;gap:28px;align-items:start}
+/* Sidebar de filtros */
+.filtros{background:var(--superficie);border:1px solid var(--borde);border-radius:var(--radio);
+  padding:20px;position:sticky;top:120px}
+.filtro-grupo{padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid var(--borde)}
+.filtro-grupo:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.filtro-titulo{font-family:var(--fuente-titulo);font-weight:800;font-size:.92rem;margin-bottom:12px;
+  display:flex;align-items:center;gap:8px}
+.filtro-titulo i{color:var(--rojo);font-size:.85rem}
+.filtro-opcion{display:flex;align-items:center;gap:9px;padding:5px 0;font-size:.88rem;cursor:pointer;
+  transition:color var(--trans)}
+.filtro-opcion:hover{color:var(--rojo)}
+.filtro-opcion input{accent-color:var(--rojo);width:16px;height:16px;cursor:pointer}
+.filtro-opcion .cuenta{margin-left:auto;font-size:.74rem;color:var(--texto-suave)}
+/* Slider de precio */
+.rango-precio{padding-top:6px}
+.rango-valores{display:flex;justify-content:space-between;font-size:.82rem;font-weight:700;margin-bottom:10px}
+.rango-valores span{background:var(--gris-100);padding:3px 10px;border-radius:6px}
+.rango-sliders{position:relative;height:34px}
+.rango-sliders input[type=range]{position:absolute;width:100%;pointer-events:none;-webkit-appearance:none;
+  appearance:none;background:none;top:12px;height:4px;margin:0}
+.rango-sliders input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;pointer-events:all;
+  width:20px;height:20px;border-radius:50%;background:var(--rojo);cursor:pointer;
+  box-shadow:0 2px 6px rgba(0,0,0,.3);border:3px solid #fff}
+.rango-sliders input[type=range]::-moz-range-thumb{pointer-events:all;width:16px;height:16px;
+  border-radius:50%;background:var(--rojo);cursor:pointer;border:3px solid #fff}
+.rango-track{position:absolute;top:12px;height:4px;width:100%;background:var(--gris-200);border-radius:3px}
+.rango-track-activo{position:absolute;top:12px;height:4px;background:var(--rojo);border-radius:3px}
+.btn-limpiar{width:100%;padding:10px;border:2px solid var(--borde);border-radius:9px;font-weight:700;
+  font-size:.85rem;color:var(--texto-suave);transition:all var(--trans);margin-top:4px}
+.btn-limpiar:hover{border-color:var(--rojo);color:var(--rojo)}
+/* Barra de herramientas del catálogo */
+.catalogo-toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;
+  margin-bottom:20px;flex-wrap:wrap;background:var(--superficie);border:1px solid var(--borde);
+  border-radius:var(--radio);padding:13px 18px}
+.catalogo-conteo{font-size:.9rem;color:var(--texto-suave)}
+.catalogo-conteo strong{color:var(--texto);font-family:var(--fuente-titulo)}
+.toolbar-derecha{display:flex;align-items:center;gap:10px}
+.orden-select{padding:9px 14px;border:2px solid var(--borde);border-radius:9px;background:var(--superficie);
+  color:var(--texto);cursor:pointer;font-size:.88rem}
+.orden-select:focus{outline:none;border-color:var(--rojo)}
+.btn-filtros-movil{display:none;padding:9px 14px;border:2px solid var(--borde);border-radius:9px;
+  font-weight:700;font-size:.85rem;align-items:center;gap:7px}
+.productos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.sin-resultados{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--texto-suave)}
+.sin-resultados i{font-size:3rem;color:var(--gris-300);margin-bottom:14px}
+.sin-resultados h3{font-size:1.2rem;margin-bottom:6px;color:var(--texto)}
+
+/* =========================================================================
+   OVERLAY GENÉRICO (para modales y carrito)
+   ========================================================================= */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(3px);z-index:1000;
+  opacity:0;visibility:hidden;transition:opacity var(--trans),visibility var(--trans)}
+.overlay.abierto{opacity:1;visibility:visible}
+
+/* =========================================================================
+   MODAL DE PRODUCTO
+   ========================================================================= */
+.modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-46%) scale(.96);z-index:1001;
+  background:var(--superficie);border-radius:16px;width:min(920px,94vw);max-height:92vh;overflow-y:auto;
+  box-shadow:var(--sombra-fuerte);opacity:0;visibility:hidden;
+  transition:opacity var(--trans),visibility var(--trans),transform var(--trans)}
+.modal.abierto{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1)}
+.modal-cerrar{position:absolute;top:14px;right:14px;width:40px;height:40px;border-radius:50%;
+  background:var(--gris-100);display:grid;place-items:center;font-size:1.1rem;z-index:5;
+  transition:all var(--trans)}
+.modal-cerrar:hover{background:var(--rojo);color:#fff;transform:rotate(90deg)}
+.ficha{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.ficha-img{background:var(--gris-100);padding:30px;display:grid;place-items:center;position:relative}
+.ficha-img svg{width:100%;max-width:340px}
+.ficha-info{padding:32px 30px}
+.ficha-cat{color:var(--rojo);font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.8px}
+.ficha-nombre{font-size:1.55rem;font-weight:900;margin:6px 0 10px;line-height:1.15}
+.ficha-meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem;color:var(--texto-suave);
+  padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--borde)}
+.ficha-meta b{color:var(--texto)}
+.ficha-precio{font-family:var(--fuente-titulo);font-weight:900;font-size:2.2rem;color:var(--rojo);
+  display:flex;align-items:baseline;gap:12px;margin-bottom:14px}
+.ficha-precio .antes{font-size:1.1rem;color:var(--texto-suave);text-decoration:line-through;font-weight:600}
+.ficha-bloque{margin-bottom:16px}
+.ficha-bloque h4{font-family:var(--fuente-titulo);font-size:.85rem;text-transform:uppercase;
+  letter-spacing:.6px;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.ficha-bloque h4 i{color:var(--rojo)}
+.ficha-compat{display:flex;flex-wrap:wrap;gap:6px}
+.ficha-compat .chip-compat{font-size:.78rem;padding:5px 11px}
+.ficha-specs{width:100%;border-collapse:collapse;font-size:.85rem}
+.ficha-specs td{padding:6px 0;border-bottom:1px solid var(--borde)}
+.ficha-specs td:first-child{color:var(--texto-suave);width:45%}
+.ficha-specs td:last-child{font-weight:600;text-align:right}
+.ficha-stock-linea{display:flex;align-items:center;gap:8px;font-weight:700;font-size:.92rem;margin-bottom:16px}
+/* Selector de cantidad + añadir */
+.ficha-compra{display:flex;gap:12px;align-items:stretch}
+.cantidad-sel{display:flex;align-items:center;border:2px solid var(--borde);border-radius:10px;overflow:hidden}
+.cantidad-sel button{width:42px;font-size:1.1rem;color:var(--texto);transition:background var(--trans)}
+.cantidad-sel button:hover{background:var(--gris-100);color:var(--rojo)}
+.cantidad-sel input{width:46px;text-align:center;border:none;background:transparent;color:var(--texto);
+  font-weight:700;font-family:var(--fuente-titulo)}
+.btn-add-grande{flex:1;background:var(--rojo);color:#fff;border-radius:10px;font-family:var(--fuente-titulo);
+  font-weight:800;font-size:.98rem;display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:14px;transition:all var(--trans)}
+.btn-add-grande:hover{background:var(--rojo-osc)}
+.btn-add-grande:disabled{background:var(--gris-300);cursor:not-allowed}
+.btn-add-grande.animando{animation:pulso .4s ease}
+@keyframes pulso{0%,100%{transform:scale(1)}50%{transform:scale(.94)}}
+/* Relacionados dentro del modal */
+.relacionados{padding:24px 30px 32px;border-top:1px solid var(--borde)}
+.relacionados h4{font-family:var(--fuente-titulo);font-size:1rem;margin-bottom:14px}
+.relacionados-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.rel-card{border:1px solid var(--borde);border-radius:10px;overflow:hidden;cursor:pointer;
+  transition:all var(--trans)}
+.rel-card:hover{border-color:var(--rojo);transform:translateY(-3px)}
+.rel-card .rel-img{aspect-ratio:4/3;background:var(--gris-100)}
+.rel-card .rel-cuerpo{padding:9px 10px}
+.rel-card .rel-nom{font-size:.78rem;font-weight:700;font-family:var(--fuente-titulo);line-height:1.2;
+  margin-bottom:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.rel-card .rel-precio{color:var(--rojo);font-weight:800;font-size:.9rem}
+
+/* =========================================================================
+   CARRITO LATERAL DESLIZABLE
+   ========================================================================= */
+.carrito-panel{position:fixed;top:0;right:0;height:100%;width:min(430px,100vw);background:var(--superficie);
+  z-index:1001;display:flex;flex-direction:column;box-shadow:var(--sombra-fuerte);
+  transform:translateX(100%);transition:transform var(--trans)}
+.carrito-panel.abierto{transform:translateX(0)}
+.carrito-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;
+  background:var(--rojo);color:#fff}
+.carrito-head h3{font-size:1.15rem;display:flex;align-items:center;gap:10px}
+.carrito-head button{width:38px;height:38px;border-radius:50%;color:#fff;transition:background var(--trans)}
+.carrito-head button:hover{background:rgba(255,255,255,.2)}
+/* Barra envío gratis */
+.envio-gratis{padding:14px 20px;background:var(--gris-50);border-bottom:1px solid var(--borde);font-size:.83rem}
+.envio-gratis-txt{margin-bottom:8px;display:flex;align-items:center;gap:7px}
+.envio-gratis-txt i{color:var(--rojo)}
+.envio-barra{height:8px;background:var(--gris-200);border-radius:5px;overflow:hidden}
+.envio-barra-fill{height:100%;background:linear-gradient(90deg,var(--rojo),var(--rojo-claro));
+  border-radius:5px;transition:width .4s ease;width:0}
+.carrito-items{flex:1;overflow-y:auto;padding:8px 20px}
+.carrito-vacio{text-align:center;padding:60px 20px;color:var(--texto-suave)}
+.carrito-vacio i{font-size:3.5rem;color:var(--gris-300);margin-bottom:16px}
+.carrito-vacio h4{font-family:var(--fuente-titulo);color:var(--texto);margin-bottom:6px}
+.ci{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--borde);position:relative}
+.ci-img{width:70px;height:70px;border-radius:9px;overflow:hidden;flex-shrink:0;background:var(--gris-100)}
+.ci-info{flex:1;min-width:0}
+.ci-nom{font-family:var(--fuente-titulo);font-weight:700;font-size:.86rem;line-height:1.2;
+  margin-bottom:2px;padding-right:20px}
+.ci-ref{font-size:.72rem;color:var(--texto-suave);margin-bottom:8px}
+.ci-precio-unit{color:var(--rojo);font-weight:700;font-size:.85rem}
+.ci-controles{display:flex;align-items:center;gap:10px;margin-top:8px}
+.ci-cant{display:flex;align-items:center;border:1px solid var(--borde);border-radius:7px;overflow:hidden}
+.ci-cant button{width:28px;height:28px;font-size:.9rem;transition:background var(--trans)}
+.ci-cant button:hover{background:var(--gris-100);color:var(--rojo)}
+.ci-cant span{width:32px;text-align:center;font-weight:700;font-size:.85rem;font-family:var(--fuente-titulo)}
+.ci-subtotal{margin-left:auto;font-weight:800;font-family:var(--fuente-titulo);font-size:.92rem}
+.ci-eliminar{position:absolute;top:14px;right:0;color:var(--gris-500);font-size:.9rem;
+  transition:color var(--trans)}
+.ci-eliminar:hover{color:var(--rojo)}
+/* Pie del carrito con totales */
+.carrito-pie{border-top:1px solid var(--borde);padding:18px 20px;background:var(--superficie)}
+.carrito-totales{margin-bottom:14px}
+.total-linea{display:flex;justify-content:space-between;font-size:.9rem;margin-bottom:7px;color:var(--texto-suave)}
+.total-linea.grande{font-family:var(--fuente-titulo);font-weight:900;font-size:1.3rem;color:var(--texto);
+  padding-top:10px;margin-top:6px;border-top:2px solid var(--borde)}
+.total-linea.grande span:last-child{color:var(--rojo)}
+.carrito-botones{display:flex;flex-direction:column;gap:9px}
+.btn-primario{background:var(--rojo);color:#fff;padding:14px;border-radius:11px;font-family:var(--fuente-titulo);
+  font-weight:800;font-size:1rem;display:flex;align-items:center;justify-content:center;gap:10px;
+  transition:all var(--trans)}
+.btn-primario:hover{background:var(--rojo-osc);transform:translateY(-2px)}
+.btn-primario:disabled{background:var(--gris-300);cursor:not-allowed;transform:none}
+.btn-secundario{background:var(--gris-100);color:var(--texto);padding:12px;border-radius:11px;
+  font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:all var(--trans)}
+.btn-secundario:hover{background:var(--gris-200)}
+.carrito-links{display:flex;justify-content:space-between;margin-top:4px}
+.carrito-links button{font-size:.82rem;color:var(--texto-suave);font-weight:600;transition:color var(--trans)}
+.carrito-links button:hover{color:var(--rojo)}
+
+/* Animación de "item cayendo al carrito" */
+.fly-img{position:fixed;z-index:2000;border-radius:10px;overflow:hidden;pointer-events:none;
+  box-shadow:0 8px 24px rgba(0,0,0,.3);transition:all .8s cubic-bezier(.5,-.3,.7,1)}
+
+/* =========================================================================
+   CHECKOUT (modal grande de 3 pasos)
+   ========================================================================= */
+.checkout{width:min(760px,95vw)}
+.checkout-head{padding:22px 30px 0}
+.checkout-head h3{font-size:1.4rem;font-weight:900}
+/* Barra de pasos */
+.pasos{display:flex;margin:20px 0 4px;gap:0}
+.paso{flex:1;text-align:center;position:relative;padding-bottom:14px}
+.paso-num{width:38px;height:38px;border-radius:50%;background:var(--gris-200);color:var(--texto-suave);
+  display:grid;place-items:center;font-family:var(--fuente-titulo);font-weight:800;margin:0 auto 6px;
+  transition:all var(--trans);border:3px solid transparent}
+.paso-txt{font-size:.78rem;font-weight:700;color:var(--texto-suave)}
+.paso::after{content:"";position:absolute;top:19px;left:calc(50% + 24px);right:calc(-50% + 24px);
+  height:3px;background:var(--gris-200);z-index:-1}
+.paso:last-child::after{display:none}
+.paso.activo .paso-num{background:var(--rojo);color:#fff}
+.paso.activo .paso-txt{color:var(--rojo)}
+.paso.completado .paso-num{background:var(--verde);color:#fff}
+.paso.completado::after{background:var(--verde)}
+.checkout-cuerpo{padding:16px 30px 26px}
+.paso-panel{display:none;animation:aparece .3s ease}
+.paso-panel.activo{display:block}
+@keyframes aparece{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:translateX(0)}}
+/* Formulario */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.campo{display:flex;flex-direction:column;gap:5px}
+.campo.completo{grid-column:1/-1}
+.campo label{font-size:.8rem;font-weight:700;color:var(--texto)}
+.campo label .req{color:var(--rojo)}
+.campo input,.campo select,.campo textarea{padding:11px 13px;border:2px solid var(--borde);
+  border-radius:9px;background:var(--superficie);color:var(--texto);transition:border-color var(--trans)}
+.campo input:focus,.campo select:focus,.campo textarea:focus{outline:none;border-color:var(--rojo)}
+.campo input.error,.campo select.error{border-color:var(--rojo);background:rgba(204,0,0,.04)}
+.campo input.valido{border-color:var(--verde)}
+.campo .msg-error{font-size:.74rem;color:var(--rojo);font-weight:600;display:none}
+.campo .msg-error.visible{display:block}
+.doc-fila{display:flex;gap:8px}
+.doc-fila select{width:90px;flex-shrink:0}
+.doc-fila input{flex:1}
+.check-fila{display:flex;align-items:flex-start;gap:10px;padding:12px;background:var(--gris-50);
+  border-radius:9px;cursor:pointer;font-size:.88rem;grid-column:1/-1}
+.check-fila input{width:18px;height:18px;accent-color:var(--rojo);flex-shrink:0;margin-top:2px}
+/* Resumen del pedido (paso 3) */
+.resumen-items{background:var(--gris-50);border-radius:11px;padding:14px 16px;margin-bottom:16px}
+.resumen-item{display:flex;justify-content:space-between;gap:10px;padding:7px 0;font-size:.88rem;
+  border-bottom:1px solid var(--borde)}
+.resumen-item:last-child{border-bottom:none}
+.resumen-item .ri-nom{flex:1}
+.resumen-item .ri-cant{color:var(--texto-suave)}
+.resumen-totales{padding:14px 16px;background:var(--superficie);border:2px solid var(--borde);border-radius:11px}
+/* Métodos de pago */
+.pago-metodos{display:flex;flex-direction:column;gap:10px;margin-bottom:8px}
+.pago-metodo{display:flex;align-items:center;gap:12px;padding:14px;border:2px solid var(--borde);
+  border-radius:11px;cursor:pointer;transition:all var(--trans)}
+.pago-metodo:hover{border-color:var(--rojo-claro)}
+.pago-metodo.sel{border-color:var(--rojo);background:rgba(204,0,0,.04)}
+.pago-metodo input{width:19px;height:19px;accent-color:var(--rojo)}
+.pago-metodo i{font-size:1.4rem;color:var(--rojo);width:30px;text-align:center}
+.pago-metodo .pm-info strong{display:block;font-family:var(--fuente-titulo);font-size:.92rem}
+.pago-metodo .pm-info span{font-size:.78rem;color:var(--texto-suave)}
+/* Datos bancarios */
+.datos-banco{background:var(--gris-50);border:2px dashed var(--rojo);border-radius:11px;padding:16px;
+  margin:12px 0;font-size:.88rem;display:none}
+.datos-banco.visible{display:block;animation:aparece .3s ease}
+.datos-banco h5{font-family:var(--fuente-titulo);color:var(--rojo);margin-bottom:10px;
+  display:flex;align-items:center;gap:8px}
+.datos-banco .db-linea{display:flex;justify-content:space-between;padding:4px 0}
+.datos-banco .db-linea b{font-family:var(--fuente-titulo)}
+.checkout-nav{display:flex;justify-content:space-between;gap:12px;padding:0 30px 26px}
+.btn-atras{background:var(--gris-100);color:var(--texto);padding:13px 24px;border-radius:10px;font-weight:700;
+  display:flex;align-items:center;gap:8px;transition:all var(--trans)}
+.btn-atras:hover{background:var(--gris-200)}
+.btn-siguiente{background:var(--rojo);color:#fff;padding:13px 28px;border-radius:10px;
+  font-family:var(--fuente-titulo);font-weight:800;display:flex;align-items:center;gap:9px;
+  transition:all var(--trans);margin-left:auto}
+.btn-siguiente:hover{background:var(--rojo-osc)}
+/* Pantalla de confirmación */
+.confirmacion{text-align:center;padding:40px 30px}
+.confirmacion-icono{width:90px;height:90px;border-radius:50%;background:var(--verde);color:#fff;
+  display:grid;place-items:center;font-size:2.6rem;margin:0 auto 20px;animation:rebote .6s ease}
+@keyframes rebote{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+.confirmacion h3{font-size:1.7rem;margin-bottom:8px}
+.confirmacion .pedido-num{font-family:var(--fuente-titulo);font-weight:900;font-size:1.5rem;
+  color:var(--rojo);background:var(--gris-50);display:inline-block;padding:8px 20px;border-radius:10px;
+  margin:12px 0;letter-spacing:1px}
+.confirmacion p{color:var(--texto-suave);margin-bottom:6px}
+.confirmacion-botones{display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap}
+.btn-whatsapp-ped{background:#25d366;color:#fff;padding:13px 24px;border-radius:10px;font-weight:800;
+  font-family:var(--fuente-titulo);display:flex;align-items:center;gap:10px;transition:all var(--trans)}
+.btn-whatsapp-ped:hover{background:#1da851;transform:translateY(-2px)}
+
+/* =========================================================================
+   FOOTER
+   ========================================================================= */
+.footer{background:var(--footer-bg);color:var(--footer-txt);padding:52px 0 0;margin-top:20px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:34px;padding-bottom:40px}
+.footer-col h4{color:#fff;font-size:1rem;margin-bottom:18px;position:relative;padding-bottom:10px}
+.footer-col h4::after{content:"";position:absolute;left:0;bottom:0;width:34px;height:3px;background:var(--rojo);border-radius:2px}
+.footer-marca{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+.footer-marca .logo-icono{width:42px;height:42px;font-size:1.35rem}
+.footer-marca strong{font-family:var(--fuente-titulo);font-weight:900;font-size:1.15rem;color:#fff}
+.footer-desc{font-size:.87rem;line-height:1.7;margin-bottom:16px}
+.footer-contacto li{display:flex;gap:11px;margin-bottom:11px;font-size:.87rem;align-items:flex-start}
+.footer-contacto i{color:var(--rojo-claro);margin-top:3px;width:16px;text-align:center;flex-shrink:0}
+.footer-links li{margin-bottom:10px}
+.footer-links a{font-size:.88rem;transition:color var(--trans);display:inline-flex;align-items:center;gap:8px}
+.footer-links a:hover{color:var(--rojo-claro);padding-left:4px}
+.footer-links a i{font-size:.7rem;color:var(--rojo)}
+.footer-social{display:flex;gap:10px;margin-top:8px}
+.footer-social a{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.08);
+  display:grid;place-items:center;font-size:1.05rem;transition:all var(--trans)}
+.footer-social a:hover{background:var(--rojo);color:#fff;transform:translateY(-3px)}
+.footer-pagos{margin-top:18px}
+.footer-pagos-titulo{font-size:.78rem;text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px;color:#fff}
+.footer-pagos-iconos{display:flex;gap:9px;flex-wrap:wrap}
+.pago-icono{background:rgba(255,255,255,.08);border-radius:8px;padding:8px 12px;font-size:.74rem;
+  display:flex;align-items:center;gap:7px;font-weight:600}
+.pago-icono i{color:var(--rojo-claro)}
+.footer-bajo{border-top:1px solid rgba(255,255,255,.1);padding:18px 0;text-align:center;font-size:.83rem}
+.footer-bajo .admin-oculto{color:rgba(255,255,255,.25);cursor:pointer;transition:color var(--trans);
+  margin-left:4px;font-size:.8rem}
+.footer-bajo .admin-oculto:hover{color:var(--rojo-claro)}
+
+/* =========================================================================
+   BOTÓN FLOTANTE DE WHATSAPP
+   ========================================================================= */
+.whatsapp-flotante{position:fixed;bottom:24px;right:24px;width:60px;height:60px;border-radius:50%;
+  background:#25d366;color:#fff;display:grid;place-items:center;font-size:1.8rem;z-index:800;
+  box-shadow:0 6px 20px rgba(37,211,102,.5);animation:latido 2.4s infinite;transition:transform var(--trans)}
+.whatsapp-flotante:hover{transform:scale(1.1)}
+@keyframes latido{0%,100%{box-shadow:0 6px 20px rgba(37,211,102,.5)}
+  50%{box-shadow:0 6px 30px rgba(37,211,102,.85)}}
+.whatsapp-flotante::after{content:"1";position:absolute;top:-2px;right:-2px;background:var(--rojo);
+  color:#fff;font-size:.7rem;font-weight:700;width:20px;height:20px;border-radius:50%;
+  display:grid;place-items:center;font-family:var(--fuente-titulo)}
+
+/* =========================================================================
+   TOASTS (notificaciones)
+   ========================================================================= */
+.toasts{position:fixed;top:18px;right:18px;z-index:3000;display:flex;flex-direction:column;gap:11px;
+  max-width:340px}
+.toast{display:flex;align-items:center;gap:13px;padding:14px 16px;border-radius:11px;color:#fff;
+  box-shadow:var(--sombra-fuerte);animation:toastIn .35s cubic-bezier(.2,.9,.3,1.3);font-size:.9rem;
+  font-weight:600}
+.toast.saliendo{animation:toastOut .35s ease forwards}
+.toast i:first-child{font-size:1.3rem;flex-shrink:0}
+.toast .toast-cerrar{margin-left:auto;opacity:.8;cursor:pointer}
+.toast-exito{background:linear-gradient(120deg,#1e9e4a,#17843d)}
+.toast-error{background:linear-gradient(120deg,#d32f2f,#b71c1c)}
+.toast-info{background:linear-gradient(120deg,#1976d2,#1565c0)}
+@keyframes toastIn{from{opacity:0;transform:translateX(120%)}to{opacity:1;transform:translateX(0)}}
+@keyframes toastOut{to{opacity:0;transform:translateX(120%)}}
+
+/* =========================================================================
+   PANEL DE ADMINISTRACIÓN
+   ========================================================================= */
+.admin{width:min(1100px,96vw);max-height:94vh}
+.admin-head{display:flex;align-items:center;justify-content:space-between;padding:20px 26px;
+  background:var(--negro);color:#fff;border-radius:16px 16px 0 0;position:sticky;top:0;z-index:5}
+.admin-head h3{font-size:1.3rem;display:flex;align-items:center;gap:12px}
+.admin-head h3 i{color:var(--rojo-claro)}
+.admin-tabs{display:flex;gap:6px;padding:14px 26px 0;border-bottom:1px solid var(--borde)}
+.admin-tab{padding:11px 20px;font-weight:700;font-size:.9rem;color:var(--texto-suave);
+  border-bottom:3px solid transparent;transition:all var(--trans)}
+.admin-tab.activo{color:var(--rojo);border-bottom-color:var(--rojo)}
+.admin-panel{display:none;padding:24px 26px}
+.admin-panel.activo{display:block}
+/* Dashboard con tarjetas de métricas */
+.dash-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.dash-card{background:var(--superficie);border:1px solid var(--borde);border-radius:13px;padding:20px;
+  position:relative;overflow:hidden}
+.dash-card .dc-icono{position:absolute;top:14px;right:14px;font-size:2.2rem;opacity:.14;color:var(--rojo)}
+.dash-card .dc-valor{font-family:var(--fuente-titulo);font-weight:900;font-size:2rem;color:var(--texto)}
+.dash-card .dc-label{font-size:.82rem;color:var(--texto-suave);font-weight:600;margin-top:2px}
+.dash-card.alerta{border-color:var(--rojo);background:rgba(204,0,0,.05)}
+.dash-card.alerta .dc-valor{color:var(--rojo)}
+/* Alerta stock bajo */
+.alerta-stock{background:rgba(232,163,0,.12);border:1px solid var(--amarillo);border-radius:11px;
+  padding:14px 18px;margin-bottom:20px;display:flex;align-items:flex-start;gap:12px}
+.alerta-stock i{color:var(--amarillo);font-size:1.4rem;margin-top:2px}
+.alerta-stock h5{font-family:var(--fuente-titulo);margin-bottom:5px}
+.alerta-stock .chips-bajo{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.alerta-stock .chip-bajo{background:var(--superficie);border:1px solid var(--amarillo);border-radius:20px;
+  padding:3px 11px;font-size:.78rem;font-weight:600}
+/* Tablas admin */
+.tabla-envoltura{overflow-x:auto;border:1px solid var(--borde);border-radius:11px}
+.tabla{width:100%;border-collapse:collapse;font-size:.86rem;min-width:640px}
+.tabla th{background:var(--gris-50);text-align:left;padding:12px 14px;font-family:var(--fuente-titulo);
+  font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.5px;color:var(--texto-suave)}
+.tabla td{padding:11px 14px;border-top:1px solid var(--borde)}
+.tabla tr:hover td{background:var(--gris-50)}
+.tabla .fila-bajo td{background:rgba(204,0,0,.05)}
+.estado-badge{font-size:.74rem;font-weight:700;padding:4px 10px;border-radius:20px;display:inline-block}
+.estado-pendiente{background:rgba(232,163,0,.18);color:var(--amarillo)}
+.estado-enviado{background:rgba(21,101,192,.18);color:var(--azul)}
+.estado-entregado{background:rgba(30,158,74,.18);color:var(--verde)}
+.estado-select{padding:5px 8px;border:1px solid var(--borde);border-radius:7px;background:var(--superficie);
+  color:var(--texto);font-size:.8rem;cursor:pointer}
+.admin-acciones{display:flex;gap:6px}
+.mini-btn{width:32px;height:32px;border-radius:7px;display:grid;place-items:center;font-size:.85rem;
+  transition:all var(--trans);border:1px solid var(--borde)}
+.mini-btn.editar:hover{background:var(--azul);color:#fff;border-color:var(--azul)}
+.mini-btn.borrar:hover{background:var(--rojo);color:#fff;border-color:var(--rojo)}
+.admin-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;gap:12px;flex-wrap:wrap}
+.btn-nuevo{background:var(--rojo);color:#fff;padding:10px 18px;border-radius:9px;font-weight:700;
+  display:flex;align-items:center;gap:8px;transition:all var(--trans)}
+.btn-nuevo:hover{background:var(--rojo-osc)}
+/* Login admin */
+.admin-login{padding:40px 30px;text-align:center;max-width:400px;margin:0 auto}
+.admin-login i.candado{font-size:3rem;color:var(--rojo);margin-bottom:16px}
+.admin-login h3{margin-bottom:8px}
+.admin-login p{color:var(--texto-suave);font-size:.9rem;margin-bottom:20px}
+.admin-login input{width:100%;padding:13px;border:2px solid var(--borde);border-radius:10px;
+  text-align:center;margin-bottom:12px;background:var(--superficie);color:var(--texto)}
+.admin-login input:focus{outline:none;border-color:var(--rojo)}
+
+/* =========================================================================
+   RESPONSIVE
+   ========================================================================= */
+@media(max-width:1024px){
+  .catalogo-layout{grid-template-columns:1fr}
+  .filtros{position:fixed;top:0;left:0;height:100%;width:min(320px,90vw);z-index:1002;overflow-y:auto;
+    border-radius:0;transform:translateX(-100%);transition:transform var(--trans)}
+  .filtros.abierto{transform:translateX(0)}
+  .btn-filtros-movil{display:flex}
+  .ofertas-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .relacionados-grid{grid-template-columns:repeat(2,1fr)}
+  .dash-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .topbar-info{gap:14px;font-size:.76rem}
+  .topbar-info .horario-top{display:none}
+  .header-main{flex-wrap:wrap;gap:12px}
+  .buscador{order:3;flex-basis:100%;max-width:100%}
+  .productos-grid{grid-template-columns:repeat(2,1fr)}
+  .bv-grid{grid-template-columns:1fr 1fr}
+  .bv-campo.bv-boton{grid-column:1/-1}
+  .btn-buscar-coche{width:100%;justify-content:center}
+  .ficha{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}
+  .seccion-titulo{font-size:1.4rem}
+}
+@media(max-width:520px){
+  .productos-grid,.ofertas-grid,.relacionados-grid{grid-template-columns:1fr 1fr}
+  .dash-grid{grid-template-columns:1fr 1fr}
+  .bv-grid{grid-template-columns:1fr}
+  .hero{padding:36px 0 44px}
+  .logo-txt strong{font-size:1.05rem}
+  .whatsapp-flotante{width:54px;height:54px;font-size:1.6rem;bottom:18px;right:18px}
+}
+@media(max-width:400px){
+  .productos-grid,.ofertas-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- =====================================================================
+     BARRA SUPERIOR FINA
+     ===================================================================== -->
+<div class="topbar">
+  <div class="contenedor">
+    <div class="topbar-info">
+      <span><i class="fa-solid fa-phone"></i> +58 412-1234567</span>
+      <span><i class="fa-solid fa-envelope"></i> ventas@repuestosguaicaipuro.com</span>
+      <span class="horario-top"><i class="fa-solid fa-clock"></i> Lun-Vie 8:00-18:00 · Sáb 8:00-14:00</span>
+    </div>
+    <div class="topbar-social">
+      <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- =====================================================================
+     HEADER STICKY
+     ===================================================================== -->
+<header class="header">
+  <div class="contenedor">
+    <div class="header-main">
+      <!-- Logo -->
+      <a href="#" class="logo" onclick="App.irInicio();return false" title="Repuestos Guaicaipuro">
+        <img class="logo-img" id="logoHeader" alt="Repuestos Guaicaipuro — Repuestos Nacionales e Importados">
+      </a>
+      <!-- Buscador de texto con autocompletado -->
+      <div class="buscador">
+        <div class="buscador-caja">
+          <input type="text" id="buscadorTexto" aria-label="Buscar repuestos por nombre o código" placeholder="Busca por nombre o código de referencia..."
+            autocomplete="off" oninput="Buscador.autocompletar(this.value)"
+            onkeydown="if(event.key==='Enter')Buscador.buscar(this.value)">
+          <button onclick="Buscador.buscar(document.getElementById('buscadorTexto').value)" aria-label="Buscar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+        <div class="autocompletado oculto" id="autocompletado"></div>
+      </div>
+      <!-- Acciones -->
+      <div class="header-acciones">
+        <button class="icono-btn" onclick="App.toggleTema()" title="Cambiar tema" id="btnTema">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="icono-btn" onclick="Toast.info('Sección de usuario — inicia sesión para ver tus pedidos')" title="Mi cuenta">
+          <i class="fa-solid fa-user"></i>
+        </button>
+        <button class="icono-btn" onclick="Favoritos.abrir()" title="Favoritos">
+          <i class="fa-solid fa-heart"></i>
+          <span class="contador" id="contadorFav" data-n="0"></span>
+        </button>
+        <button class="icono-btn" onclick="Carrito.abrir()" title="Carrito" id="btnCarrito">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="contador" id="contadorCarrito" data-n="0"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- =====================================================================
+     HERO + BUSCADOR POR VEHÍCULO
+     ===================================================================== -->
+<section class="hero">
+  <div class="contenedor">
+    <div class="hero-txt">
+      <h1>¿Buscas repuestos? <span>Encuéntralos por tu vehículo</span></h1>
+      <p>Miles de piezas originales y de primeras marcas para tu coche. Encuentra la pieza exacta seleccionando marca, modelo y año.</p>
+    </div>
+    <!-- Caja del buscador de vehículo -->
+    <div class="buscador-vehiculo">
+      <div class="bv-titulo"><i class="fa-solid fa-car-side"></i> Selecciona tu vehículo</div>
+      <div class="bv-grid">
+        <div class="bv-campo">
+          <label>Marca</label>
+          <select id="bvMarca" aria-label="Marca del vehículo" onchange="BuscadorVehiculo.cargarModelos()">
+            <option value="">Elige marca...</option>
+          </select>
+        </div>
+        <div class="bv-campo">
+          <label>Modelo</label>
+          <select id="bvModelo" aria-label="Modelo del vehículo" disabled onchange="BuscadorVehiculo.cargarAnios()">
+            <option value="">Elige modelo...</option>
+          </select>
+        </div>
+        <div class="bv-campo">
+          <label>Año</label>
+          <select id="bvAnio" aria-label="Año del vehículo" disabled>
+            <option value="">Elige año...</option>
+          </select>
+        </div>
+        <div class="bv-campo bv-boton">
+          <button class="btn-buscar-coche" onclick="BuscadorVehiculo.buscar()">
+            <i class="fa-solid fa-magnifying-glass"></i> Buscar repuestos
+          </button>
+        </div>
+      </div>
+      <!-- Chip del vehículo seleccionado -->
+      <div class="vehiculo-activo" id="vehiculoActivo">
+        <i class="fa-solid fa-car"></i>
+        <span id="vehiculoActivoTxt"></span>
+        <button onclick="BuscadorVehiculo.limpiar()" title="Quitar filtro"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     OFERTAS DEL MES
+     ===================================================================== -->
+<section class="seccion ofertas" id="seccionOfertas">
+  <div class="contenedor">
+    <div class="seccion-cabecera">
+      <h2 class="seccion-titulo">Ofertas del mes
+        <small>Los mejores precios en piezas seleccionadas</small>
+      </h2>
+    </div>
+    <div class="ofertas-grid" id="ofertasGrid"></div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     CATÁLOGO (filtros + grid)
+     ===================================================================== -->
+<section class="seccion" id="catalogo">
+  <div class="contenedor">
+    <div class="seccion-cabecera">
+      <h2 class="seccion-titulo">Catálogo de repuestos
+        <small id="catalogoSubtitulo">Todas las categorías</small>
+      </h2>
+    </div>
+    <div class="catalogo-layout">
+      <!-- Sidebar de filtros -->
+      <aside class="filtros" id="filtros">
+        <div class="filtro-grupo" style="display:flex;justify-content:space-between;align-items:center;padding-bottom:12px">
+          <span style="font-family:var(--fuente-titulo);font-weight:800">Filtros</span>
+          <button onclick="Catalogo.cerrarFiltrosMovil()" style="display:none" id="cerrarFiltrosMovil"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="filtro-grupo">
+          <div class="filtro-titulo"><i class="fa-solid fa-layer-group"></i> Categoría</div>
+          <div id="filtroCategorias"></div>
+        </div>
+        <div class="filtro-grupo">
+          <div class="filtro-titulo"><i class="fa-solid fa-tag"></i> Marca del repuesto</div>
+          <div id="filtroMarcas"></div>
+        </div>
+        <div class="filtro-grupo">
+          <div class="filtro-titulo"><i class="fa-solid fa-dollar-sign"></i> Rango de precio</div>
+          <div class="rango-precio">
+            <div class="rango-valores">
+              <span id="rangoMin">$0</span>
+              <span id="rangoMax">$450</span>
+            </div>
+            <div class="rango-sliders">
+              <div class="rango-track"></div>
+              <div class="rango-track-activo" id="rangoTrackActivo"></div>
+              <input type="range" id="precioMin" aria-label="Precio mínimo" min="0" max="450" value="0" step="5" oninput="Catalogo.actualizarRango()">
+              <input type="range" id="precioMax" aria-label="Precio máximo" min="0" max="450" value="450" step="5" oninput="Catalogo.actualizarRango()">
+            </div>
+          </div>
+        </div>
+        <div class="filtro-grupo">
+          <button class="btn-limpiar" onclick="Catalogo.limpiarFiltros()"><i class="fa-solid fa-rotate-left"></i> Limpiar filtros</button>
+        </div>
+      </aside>
+      <!-- Grid + toolbar -->
+      <div>
+        <div class="catalogo-toolbar">
+          <div class="catalogo-conteo">Mostrando <strong id="conteoProductos">0</strong> repuestos</div>
+          <div class="toolbar-derecha">
+            <button class="btn-filtros-movil" onclick="Catalogo.abrirFiltrosMovil()"><i class="fa-solid fa-sliders"></i> Filtros</button>
+            <select class="orden-select" id="ordenSelect" aria-label="Ordenar productos" onchange="Catalogo.render()">
+              <option value="relevancia">Ordenar por: Relevancia</option>
+              <option value="precio-asc">Precio: menor a mayor</option>
+              <option value="precio-desc">Precio: mayor a menor</option>
+              <option value="nombre">Nombre: A-Z</option>
+              <option value="vendidos">Más vendidos</option>
+            </select>
+          </div>
+        </div>
+        <div class="productos-grid" id="productosGrid"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     FOOTER
+     ===================================================================== -->
+<footer class="footer">
+  <div class="contenedor">
+    <div class="footer-grid">
+      <!-- Columna marca -->
+      <div class="footer-col">
+        <div class="footer-marca">
+          <img class="logo-img logo-img-footer" id="logoFooter" alt="Repuestos Guaicaipuro">
+        </div>
+        <p class="footer-desc">Repuestos de calidad para tu vehículo. Piezas originales y de primeras marcas con garantía, atención personalizada y envíos a toda Venezuela.</p>
+        <div class="footer-social">
+          <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+      <!-- Columna categorías -->
+      <div class="footer-col">
+        <h4>Categorías</h4>
+        <ul class="footer-links" id="footerCategorias"></ul>
+      </div>
+      <!-- Columna información -->
+      <div class="footer-col">
+        <h4>Información</h4>
+        <ul class="footer-links">
+          <li><a href="#" onclick="Toast.info('Repuestos Guaicaipuro: más de 15 años surtiendo repuestos de calidad');return false"><i class="fa-solid fa-chevron-right"></i> Sobre nosotros</a></li>
+          <li><a href="#" onclick="Toast.info('Escríbenos a ventas@repuestosguaicaipuro.com');return false"><i class="fa-solid fa-chevron-right"></i> Contacto</a></li>
+          <li><a href="#" onclick="Toast.info('Términos y condiciones — compra 100% segura');return false"><i class="fa-solid fa-chevron-right"></i> Términos y condiciones</a></li>
+          <li><a href="#" onclick="Toast.info('Política de devoluciones: 30 días');return false"><i class="fa-solid fa-chevron-right"></i> Devoluciones</a></li>
+        </ul>
+      </div>
+      <!-- Columna atención al cliente -->
+      <div class="footer-col">
+        <h4>Atención al cliente</h4>
+        <ul class="footer-contacto">
+          <li><i class="fa-solid fa-location-dot"></i> Calle Principal, Sector Guaicaipuro, Municipio Guaicaipuro, Estado Miranda, Venezuela</li>
+          <li><i class="fa-solid fa-phone"></i> +58 412-1234567</li>
+          <li><i class="fa-solid fa-envelope"></i> ventas@repuestosguaicaipuro.com</li>
+          <li><i class="fa-solid fa-clock"></i> Lun-Vie 8:00-18:00 · Sáb 8:00-14:00</li>
+        </ul>
+        <div class="footer-pagos">
+          <div class="footer-pagos-titulo">Métodos de pago</div>
+          <div class="footer-pagos-iconos">
+            <span class="pago-icono"><i class="fa-solid fa-mobile-screen-button"></i> Pago móvil</span>
+            <span class="pago-icono"><i class="fa-solid fa-building-columns"></i> Transferencia</span>
+            <span class="pago-icono"><i class="fa-solid fa-money-bill-wave"></i> Efectivo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bajo">
+      © 2024 Repuestos Guaicaipuro - Todos los derechos reservados.
+      <span class="admin-oculto" onclick="Admin.abrir()" title="Acceso administración"><i class="fa-solid fa-lock"></i></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Botón flotante de WhatsApp -->
+<a class="whatsapp-flotante" id="whatsappFlotante" title="Escríbenos por WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+
+<!-- =====================================================================
+     OVERLAY + CARRITO LATERAL
+     ===================================================================== -->
+<div class="overlay" id="overlay" onclick="App.cerrarTodo()"></div>
+
+<aside class="carrito-panel" id="carritoPanel">
+  <div class="carrito-head">
+    <h3><i class="fa-solid fa-cart-shopping"></i> Tu carrito</h3>
+    <button onclick="Carrito.cerrar()" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <!-- Barra de envío gratis -->
+  <div class="envio-gratis" id="envioGratisBox">
+    <div class="envio-gratis-txt" id="envioGratisTxt"></div>
+    <div class="envio-barra"><div class="envio-barra-fill" id="envioBarraFill"></div></div>
+  </div>
+  <div class="carrito-items" id="carritoItems"></div>
+  <div class="carrito-pie" id="carritoPie"></div>
+</aside>
+
+<!-- =====================================================================
+     MODAL DE PRODUCTO
+     ===================================================================== -->
+<div class="modal" id="modalProducto">
+  <button class="modal-cerrar" onclick="Producto.cerrar()"><i class="fa-solid fa-xmark"></i></button>
+  <div id="modalProductoContenido"></div>
+</div>
+
+<!-- =====================================================================
+     MODAL DE CHECKOUT
+     ===================================================================== -->
+<div class="modal checkout" id="modalCheckout">
+  <button class="modal-cerrar" onclick="Checkout.cerrar()"><i class="fa-solid fa-xmark"></i></button>
+  <div id="modalCheckoutContenido"></div>
+</div>
+
+<!-- =====================================================================
+     MODAL DE ADMINISTRACIÓN
+     ===================================================================== -->
+<div class="modal admin" id="modalAdmin">
+  <button class="modal-cerrar" onclick="Admin.cerrar()" style="z-index:10"><i class="fa-solid fa-xmark"></i></button>
+  <div id="modalAdminContenido"></div>
+</div>
+
+<!-- Contenedor de toasts -->
+<div class="toasts" id="toasts"></div>
+
+<script>
+/* Logo oficial de Repuestos Guaicaipuro (embebido como data URI para funcionar sin conexión) */
+const LOGO_URI = "data:image/webp;base64,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";
+/* =========================================================================
+   ============  DATOS PRECARGADOS  ========================================
+   ========================================================================= */
+
+/* --- Categorías con su icono (Font Awesome) y color para el placeholder --- */
+const CATEGORIAS = [
+  {id:'frenos',       nombre:'Frenos',        icono:'fa-car-burst',      color:'#CC0000'},
+  {id:'motor',        nombre:'Motor',         icono:'fa-gear',           color:'#2e5cb8'},
+  {id:'suspension',   nombre:'Suspensión',    icono:'fa-arrows-up-down', color:'#1e9e4a'},
+  {id:'filtros',      nombre:'Filtros',       icono:'fa-filter',         color:'#e8a300'},
+  {id:'embrague',     nombre:'Embrague',      icono:'fa-compact-disc',   color:'#8e44ad'},
+  {id:'electrico',    nombre:'Eléctrico',     icono:'fa-bolt',           color:'#e67e22'},
+  {id:'carroceria',   nombre:'Carrocería',    icono:'fa-car-side',       color:'#16a085'},
+  {id:'escape',       nombre:'Escape',        icono:'fa-wind',           color:'#7f8c8d'},
+  {id:'refrigeracion',nombre:'Refrigeración', icono:'fa-temperature-low',color:'#2980b9'},
+  {id:'transmision',  nombre:'Transmisión',   icono:'fa-gears',          color:'#c0392b'}
+];
+
+/* --- Marcas de repuestos --- */
+const MARCAS_REPUESTO = ['Bosch','Valeo','Brembo','Monroe','Gates','Mann-Filter','Sachs','Denso','NGK','Contitech'];
+
+/* --- Compatibilidad de vehículos: marca -> modelos -> [añoDesde, añoHasta] ---
+   Datos precargados para el buscador por vehículo (más de 15 combinaciones). --- */
+const VEHICULOS = {
+  'Seat':       {'Ibiza':[2002,2024],'León':[2005,2024],'Arosa':[2000,2004],'Córdoba':[2000,2009],'Ateca':[2016,2024]},
+  'Renault':    {'Clio':[2000,2024],'Mégane':[2002,2024],'Laguna':[2001,2015],'Kangoo':[2000,2024],'Captur':[2013,2024]},
+  'Volkswagen': {'Golf':[2000,2024],'Polo':[2001,2024],'Passat':[2000,2024],'Tiguan':[2007,2024],'Jetta':[2005,2024]},
+  'Peugeot':    {'206':[2000,2012],'207':[2006,2014],'308':[2007,2024],'3008':[2009,2024],'Partner':[2000,2024]},
+  'Skoda':      {'Octavia':[2000,2024],'Fabia':[2000,2024],'Superb':[2002,2024],'Rapid':[2012,2024]},
+  'Fiat':       {'Punto':[2000,2018],'Panda':[2003,2024],'500':[2007,2024],'Bravo':[2007,2015]}
+};
+
+/* --- Estados de Venezuela (los 24) para el checkout --- */
+const ESTADOS_VE = ['Amazonas','Anzoátegui','Apure','Aragua','Barinas','Bolívar','Carabobo','Cojedes',
+  'Delta Amacuro','Distrito Capital','Falcón','Guárico','La Guaira','Lara','Mérida','Miranda','Monagas',
+  'Nueva Esparta','Portuguesa','Sucre','Táchira','Trujillo','Yaracuy','Zulia'];
+
+/* --- Helper: genera una lista de compatibles a partir de pares [marca, modelo] --- */
+function compat(pares){ return pares.map(p=>({marca:p[0],modelo:p[1]})); }
+
+/* --- Catálogo base de 30 productos (se copia a localStorage la primera vez) ---
+   Cada producto: id, nombre, ref, categoría, marca del repuesto, precio, precioAntes (oferta),
+   stock, vehículos compatibles, especificaciones técnicas, destacado (oferta del mes), vendidos. --- */
+const PRODUCTOS_BASE = [
+  {id:1, nombre:'Pastillas de freno delanteras', ref:'FR-2024', categoria:'frenos', marca:'Brembo', precio:45, precioAntes:58, stock:24, vendidos:210,
+   compat:compat([['Seat','Ibiza'],['Volkswagen','Golf'],['Skoda','Octavia']]),
+   specs:{'Material':'Cerámica','Posición':'Eje delantero','Grosor':'17.5 mm','Homologación':'ECE R90'}, destacado:true},
+  {id:2, nombre:'Disco de freno ventilado', ref:'FR-1188', categoria:'frenos', marca:'Bosch', precio:62, precioAntes:null, stock:16, vendidos:154,
+   compat:compat([['Renault','Mégane'],['Peugeot','308'],['Volkswagen','Passat']]),
+   specs:{'Diámetro':'280 mm','Tipo':'Ventilado','Altura':'49.6 mm','Nº agujeros':'5'}},
+  {id:3, nombre:'Kit de embrague completo', ref:'EM-1034', categoria:'embrague', marca:'Sachs', precio:189, precioAntes:229, stock:8, vendidos:98,
+   compat:compat([['Volkswagen','Golf'],['Seat','León'],['Skoda','Octavia']]),
+   specs:{'Diámetro':'228 mm','Incluye':'Disco + Prensa + Cojinete','Estriado':'23 dientes'}, destacado:true},
+  {id:4, nombre:'Filtro de aceite', ref:'FI-3001', categoria:'filtros', marca:'Mann-Filter', precio:9, precioAntes:null, stock:120, vendidos:512,
+   compat:compat([['Seat','Ibiza'],['Volkswagen','Polo'],['Fiat','Punto']]),
+   specs:{'Altura':'79 mm','Rosca':'3/4-16 UNF','Válvula antirretorno':'Sí'}},
+  {id:5, nombre:'Filtro de aire motor', ref:'FI-3042', categoria:'filtros', marca:'Bosch', precio:14, precioAntes:19, stock:85, vendidos:341,
+   compat:compat([['Renault','Clio'],['Peugeot','206'],['Fiat','Panda']]),
+   specs:{'Largo':'256 mm','Ancho':'174 mm','Alto':'59 mm','Tipo':'Panel'}, destacado:true},
+  {id:6, nombre:'Amortiguador delantero', ref:'SU-2210', categoria:'suspension', marca:'Monroe', precio:78, precioAntes:null, stock:14, vendidos:132,
+   compat:compat([['Volkswagen','Golf'],['Seat','León'],['Skoda','Octavia']]),
+   specs:{'Tipo':'Presión de gas','Posición':'Delantero','Longitud':'520 mm'}},
+  {id:7, nombre:'Bujía de encendido iridio', ref:'EL-4501', categoria:'electrico', marca:'NGK', precio:12, precioAntes:null, stock:200, vendidos:623,
+   compat:compat([['Volkswagen','Polo'],['Seat','Ibiza'],['Renault','Clio']]),
+   specs:{'Electrodo':'Iridio','Rosca':'14 mm','Distancia':'0.9 mm','Grado térmico':'6'}},
+  {id:8, nombre:'Batería 12V 70Ah', ref:'EL-4712', categoria:'electrico', marca:'Bosch', precio:135, precioAntes:159, stock:9, vendidos:76,
+   compat:compat([['Volkswagen','Passat'],['Peugeot','3008'],['Renault','Laguna']]),
+   specs:{'Voltaje':'12 V','Capacidad':'70 Ah','Arranque':'640 A','Polaridad':'Derecha'}},
+  {id:9, nombre:'Correa de distribución', ref:'MO-1509', categoria:'motor', marca:'Gates', precio:34, precioAntes:null, stock:28, vendidos:187,
+   compat:compat([['Seat','Ibiza'],['Volkswagen','Golf'],['Skoda','Fabia']]),
+   specs:{'Dientes':'137','Ancho':'25 mm','Perfil':'Redondo'}},
+  {id:10, nombre:'Bomba de agua', ref:'RE-6001', categoria:'refrigeracion', marca:'Gates', precio:47, precioAntes:null, stock:19, vendidos:143,
+   compat:compat([['Renault','Mégane'],['Peugeot','308'],['Fiat','Bravo']]),
+   specs:{'Conexión':'Mecánica','Álabes':'6','Junta incluida':'Sí'}},
+  {id:11, nombre:'Radiador de refrigeración', ref:'RE-6110', categoria:'refrigeracion', marca:'Valeo', precio:118, precioAntes:145, stock:6, vendidos:54,
+   compat:compat([['Volkswagen','Golf'],['Seat','León'],['Skoda','Octavia']]),
+   specs:{'Material':'Aluminio/Plástico','Ancho':'650 mm','Alto':'415 mm','Filas':'1'}, destacado:true},
+  {id:12, nombre:'Silenciador de escape trasero', ref:'ES-7020', categoria:'escape', marca:'Bosch', precio:89, precioAntes:null, stock:11, vendidos:41,
+   compat:compat([['Renault','Clio'],['Peugeot','207'],['Fiat','Punto']]),
+   specs:{'Material':'Acero aluminizado','Entrada':'50 mm','Salida':'50 mm'}},
+  {id:13, nombre:'Catalizador homologado', ref:'ES-7150', categoria:'escape', marca:'Bosch', precio:245, precioAntes:null, stock:4, vendidos:23,
+   compat:compat([['Volkswagen','Polo'],['Seat','Ibiza'],['Skoda','Fabia']]),
+   specs:{'Norma':'Euro 5','Longitud':'420 mm','Conexión':'Con brida'}},
+  {id:14, nombre:'Kit de discos y pastillas', ref:'FR-1300', categoria:'frenos', marca:'Brembo', precio:128, precioAntes:165, stock:13, vendidos:167,
+   compat:compat([['Volkswagen','Passat'],['Seat','León'],['Renault','Laguna']]),
+   specs:{'Incluye':'2 discos + 4 pastillas','Diámetro':'288 mm','Eje':'Delantero'}, destacado:true},
+  {id:15, nombre:'Bobina de encendido', ref:'EL-4890', categoria:'electrico', marca:'Denso', precio:56, precioAntes:null, stock:22, vendidos:89,
+   compat:compat([['Toyota','Corolla'],['Volkswagen','Golf'],['Seat','Ibiza']]),
+   specs:{'Salidas':'1','Conector':'3 pines','Resistencia':'0.7 Ω'}},
+  {id:16, nombre:'Sensor de oxígeno (lambda)', ref:'EL-4915', categoria:'electrico', marca:'Denso', precio:68, precioAntes:null, stock:17, vendidos:72,
+   compat:compat([['Renault','Mégane'],['Peugeot','308'],['Fiat','Bravo']]),
+   specs:{'Cables':'4','Tipo':'Banda ancha','Longitud cable':'480 mm'}},
+  {id:17, nombre:'Rótula de suspensión', ref:'SU-2340', categoria:'suspension', marca:'Monroe', precio:23, precioAntes:null, stock:44, vendidos:198,
+   compat:compat([['Seat','Ibiza'],['Volkswagen','Polo'],['Skoda','Fabia']]),
+   specs:{'Cono':'17 mm','Rosca':'M12x1.5','Posición':'Inferior'}},
+  {id:18, nombre:'Brazo de suspensión inferior', ref:'SU-2401', categoria:'suspension', marca:'Sachs', precio:64, precioAntes:82, stock:15, vendidos:64,
+   compat:compat([['Volkswagen','Golf'],['Seat','León'],['Skoda','Octavia']]),
+   specs:{'Lado':'Delantero izquierdo','Material':'Acero','Silentblocks':'Incluidos'}},
+  {id:19, nombre:'Filtro de combustible', ref:'FI-3110', categoria:'filtros', marca:'Mann-Filter', precio:16, precioAntes:null, stock:70, vendidos:256,
+   compat:compat([['Renault','Clio'],['Peugeot','206'],['Fiat','Panda']]),
+   specs:{'Diámetro':'55 mm','Altura':'135 mm','Conexión':'8 mm'}},
+  {id:20, nombre:'Filtro de habitáculo carbón activo', ref:'FI-3155', categoria:'filtros', marca:'Bosch', precio:18, precioAntes:24, stock:62, vendidos:203,
+   compat:compat([['Volkswagen','Golf'],['Seat','León'],['Skoda','Octavia']]),
+   specs:{'Tipo':'Carbón activo','Largo':'285 mm','Ancho':'215 mm','Alto':'30 mm'}},
+  {id:21, nombre:'Volante bimasa', ref:'EM-1120', categoria:'embrague', marca:'Sachs', precio:320, precioAntes:389, stock:3, vendidos:19,
+   compat:compat([['Volkswagen','Passat'],['Seat','León'],['Skoda','Superb']]),
+   specs:{'Diámetro':'240 mm','Nº taladros':'8','Peso':'11.2 kg'}},
+  {id:22, nombre:'Cilindro receptor de embrague', ref:'EM-1205', categoria:'embrague', marca:'Valeo', precio:42, precioAntes:null, stock:26, vendidos:57,
+   compat:compat([['Renault','Mégane'],['Peugeot','308'],['Fiat','Bravo']]),
+   specs:{'Tipo':'Hidráulico','Diámetro':'19.05 mm','Conexión':'Rápida'}},
+  {id:23, nombre:'Bomba de aceite del motor', ref:'MO-1620', categoria:'motor', marca:'Bosch', precio:97, precioAntes:null, stock:7, vendidos:38,
+   compat:compat([['Volkswagen','Golf'],['Seat','Ibiza'],['Skoda','Fabia']]),
+   specs:{'Presión':'4.5 bar','Accionamiento':'Cadena','Caudal':'Alto'}},
+  {id:24, nombre:'Junta de culata', ref:'MO-1701', categoria:'motor', marca:'Valeo', precio:52, precioAntes:null, stock:20, vendidos:81,
+   compat:compat([['Renault','Clio'],['Peugeot','207'],['Fiat','Punto']]),
+   specs:{'Material':'Multicapa metálica','Espesor':'1.2 mm','Cilindros':'4'}},
+  {id:25, nombre:'Turbocompresor', ref:'MO-1855', categoria:'motor', marca:'Bosch', precio:430, precioAntes:null, stock:2, vendidos:14,
+   compat:compat([['Volkswagen','Passat'],['Seat','León'],['Skoda','Superb']]),
+   specs:{'Tipo':'Geometría variable','Presión máx':'1.2 bar','Refrigeración':'Agua/Aceite'}},
+  {id:26, nombre:'Termostato con carcasa', ref:'RE-6220', categoria:'refrigeracion', marca:'Gates', precio:29, precioAntes:38, stock:33, vendidos:112,
+   compat:compat([['Seat','Ibiza'],['Volkswagen','Polo'],['Skoda','Fabia']]),
+   specs:{'Apertura':'87 °C','Material':'Plástico reforzado','Sensor':'Incluido'}, destacado:true},
+  {id:27, nombre:'Ventilador de radiador', ref:'RE-6301', categoria:'refrigeracion', marca:'Valeo', precio:88, precioAntes:null, stock:10, vendidos:47,
+   compat:compat([['Renault','Mégane'],['Peugeot','3008'],['Fiat','Bravo']]),
+   specs:{'Diámetro':'345 mm','Potencia':'300 W','Aspas':'7'}},
+  {id:28, nombre:'Retrovisor exterior derecho', ref:'CA-8100', categoria:'carroceria', marca:'Valeo', precio:73, precioAntes:null, stock:12, vendidos:35,
+   compat:compat([['Volkswagen','Golf'],['Seat','León'],['Skoda','Octavia']]),
+   specs:{'Reglaje':'Eléctrico','Térmico':'Sí','Color':'Imprimado'}},
+  {id:29, nombre:'Faro delantero halógeno', ref:'CA-8250', categoria:'carroceria', marca:'Valeo', precio:105, precioAntes:139, stock:8, vendidos:44,
+   compat:compat([['Renault','Clio'],['Peugeot','208'],['Fiat','Punto']]),
+   specs:{'Tipo':'Halógeno H4','Lado':'Derecho','Regulación':'Eléctrica'}},
+  {id:30, nombre:'Palier de transmisión', ref:'TR-9010', categoria:'transmision', marca:'Sachs', precio:112, precioAntes:null, stock:9, vendidos:29,
+   compat:compat([['Volkswagen','Golf'],['Seat','Ibiza'],['Skoda','Fabia']]),
+   specs:{'Lado':'Derecho','Estrías caja':'25','Estrías rueda':'36','Longitud':'620 mm'}},
+  {id:31, nombre:'Cremallera de dirección', ref:'TR-9120', categoria:'transmision', marca:'Bosch', precio:298, precioAntes:349, stock:3, vendidos:11,
+   compat:compat([['Volkswagen','Passat'],['Seat','León'],['Skoda','Superb']]),
+   specs:{'Asistencia':'Eléctrica','Vueltas':'2.8','Reacondicionado':'No'}},
+  {id:32, nombre:'Bomba de dirección asistida', ref:'TR-9205', categoria:'transmision', marca:'Valeo', precio:156, precioAntes:null, stock:5, vendidos:22,
+   compat:compat([['Renault','Laguna'],['Peugeot','3008'],['Fiat','Bravo']]),
+   specs:{'Tipo':'Hidráulica','Presión':'110 bar','Poleas':'1'}}
+];
+
+/* =========================================================================
+   ============  ESTADO Y PERSISTENCIA (localStorage)  =====================
+   ========================================================================= */
+const LS = {
+  PRODUCTOS:'gc_productos', CARRITO:'gc_carrito', PEDIDOS:'gc_pedidos',
+  FAV:'gc_favoritos', TEMA:'gc_tema'
+};
+
+/* Objeto de estado central */
+const Estado = {
+  productos:[], carrito:[], pedidos:[], favoritos:[],
+  filtroVehiculo:null, // {marca,modelo,anio}
+  filtroBusqueda:'',    // texto del buscador
+  cargar(){
+    this.productos = JSON.parse(localStorage.getItem(LS.PRODUCTOS)) || null;
+    if(!this.productos){ this.productos = JSON.parse(JSON.stringify(PRODUCTOS_BASE)); this.guardarProductos(); }
+    this.carrito   = JSON.parse(localStorage.getItem(LS.CARRITO))  || [];
+    this.pedidos   = JSON.parse(localStorage.getItem(LS.PEDIDOS))  || [];
+    this.favoritos = JSON.parse(localStorage.getItem(LS.FAV))      || [];
+  },
+  guardarProductos(){ localStorage.setItem(LS.PRODUCTOS, JSON.stringify(this.productos)); },
+  guardarCarrito(){   localStorage.setItem(LS.CARRITO,   JSON.stringify(this.carrito)); },
+  guardarPedidos(){   localStorage.setItem(LS.PEDIDOS,   JSON.stringify(this.pedidos)); },
+  guardarFav(){       localStorage.setItem(LS.FAV,       JSON.stringify(this.favoritos)); },
+  producto(id){ return this.productos.find(p=>p.id===id); }
+};
+
+/* =========================================================================
+   ============  UTILIDADES  ===============================================
+   ========================================================================= */
+/* ============  ILUSTRACIONES VECTORIALES DE PIEZAS  ============
+   Cada dibujo es un SVG hecho a mano (metal gris + color de acento {C}) que representa
+   el TIPO de repuesto, para que cada producto se vea como la pieza real (estilo catálogo
+   de recambios) sin usar imágenes externas: 100% offline. {C} se sustituye por el color. */
+const DIBUJOS = {
+  // Pastillas de freno (par)
+  PAD:`<g stroke="#5b636b" stroke-width="3">
+    <g transform="translate(-14,-26)"><rect x="-84" y="-24" width="150" height="46" rx="7" fill="#aeb6bd"/>
+    <rect x="-84" y="-24" width="150" height="23" rx="7" fill="{C}"/><rect x="58" y="-16" width="16" height="26" rx="3" fill="#8b939b"/></g>
+    <g transform="translate(16,30)"><rect x="-84" y="-24" width="150" height="46" rx="7" fill="#c3cad0"/>
+    <rect x="-84" y="-24" width="150" height="23" rx="7" fill="{C}" fill-opacity="0.82"/><rect x="58" y="-16" width="16" height="26" rx="3" fill="#aeb6bd"/></g></g>`,
+  // Disco de freno perforado
+  DISC:`<g stroke="#5b636b"><circle r="96" fill="#b8bfc6" stroke-width="4"/><circle r="90" fill="none" stroke="#8b939b" stroke-width="7"/>
+    <g fill="#eef1f3" stroke="none"><circle cx="70" cy="0" r="5"/><circle cx="49" cy="49" r="5"/><circle cx="0" cy="70" r="5"/><circle cx="-49" cy="49" r="5"/><circle cx="-70" cy="0" r="5"/><circle cx="-49" cy="-49" r="5"/><circle cx="0" cy="-70" r="5"/><circle cx="49" cy="-49" r="5"/></g>
+    <circle r="49" fill="#cfd6db" stroke-width="3"/><circle r="23" fill="#9aa3ad" stroke-width="3"/>
+    <g fill="#7f8790" stroke="none"><circle cx="0" cy="-36" r="6"/><circle cx="34" cy="12" r="6"/><circle cx="-34" cy="12" r="6"/><circle cx="21" cy="-30" r="6"/><circle cx="-21" cy="-30" r="6"/></g>
+    <circle r="8" fill="{C}" stroke="none"/></g>`,
+  // Disco de embrague
+  CLUTCH:`<g stroke="#5b636b"><circle r="94" fill="#b8bfc6" stroke-width="4"/><circle r="86" fill="none" stroke="{C}" stroke-width="12" stroke-dasharray="13 9"/>
+    <circle r="44" fill="#9aa3ad" stroke-width="3"/><g fill="#cfd6db" stroke-width="2"><circle cx="-24" cy="0" r="10"/><circle cx="24" cy="0" r="10"/><circle cx="0" cy="-24" r="10"/><circle cx="0" cy="24" r="10"/></g>
+    <circle r="15" fill="#eef1f3" stroke-width="3"/><path d="M-9,-9 L9,9 M9,-9 L-9,9" stroke-width="3"/></g>`,
+  // Filtro de aceite (bote cilíndrico)
+  OILFILTER:`<g stroke="#5b636b" stroke-width="4"><rect x="-46" y="-84" width="92" height="150" rx="20" fill="#b8bfc6"/>
+    <rect x="-46" y="-84" width="92" height="30" rx="16" fill="{C}"/><ellipse cx="0" cy="-84" rx="46" ry="13" fill="#cfd6db"/>
+    <g stroke="#8b939b" stroke-width="3"><line x1="-46" y1="-24" x2="46" y2="-24"/><line x1="-46" y1="6" x2="46" y2="6"/><line x1="-46" y1="36" x2="46" y2="36"/></g></g>`,
+  // Filtro de aire (panel plegado)
+  AIRFILTER:`<g stroke="#5b636b" stroke-width="4"><rect x="-104" y="-64" width="208" height="128" rx="14" fill="{C}" fill-opacity="0.28"/>
+    <rect x="-88" y="-48" width="176" height="96" fill="#cfd6db"/>
+    <g stroke="#8b939b" stroke-width="7"><line x1="-76" y1="-48" x2="-76" y2="48"/><line x1="-57" y1="-48" x2="-57" y2="48"/><line x1="-38" y1="-48" x2="-38" y2="48"/><line x1="-19" y1="-48" x2="-19" y2="48"/><line x1="0" y1="-48" x2="0" y2="48"/><line x1="19" y1="-48" x2="19" y2="48"/><line x1="38" y1="-48" x2="38" y2="48"/><line x1="57" y1="-48" x2="57" y2="48"/><line x1="76" y1="-48" x2="76" y2="48"/></g></g>`,
+  // Amortiguador
+  SHOCK:`<g stroke="#5b636b"><circle cx="0" cy="-98" r="17" fill="none" stroke="#7f8790" stroke-width="11"/>
+    <rect x="-8" y="-92" width="16" height="66" fill="#cfd6db" stroke-width="2"/><rect x="-16" y="-30" width="32" height="92" rx="9" fill="#9aa3ad" stroke-width="3"/>
+    <rect x="-18" y="-4" width="36" height="11" fill="{C}" stroke="none"/><circle cx="0" cy="74" r="17" fill="none" stroke="#7f8790" stroke-width="11"/></g>`,
+  // Bujía
+  SPARK:`<g stroke="#5b636b"><rect x="-9" y="-98" width="18" height="24" rx="4" fill="#7f8790" stroke-width="2"/>
+    <path d="M-15,-74 Q-19,-42 -14,-18 L14,-18 Q19,-42 15,-74 Z" fill="#eef1f3" stroke-width="3"/>
+    <polygon points="-21,-18 21,-18 17,8 -17,8" fill="{C}" stroke-width="2"/><rect x="-15" y="8" width="30" height="44" fill="#aeb6bd" stroke-width="3"/>
+    <g stroke="#8b939b" stroke-width="2"><line x1="-15" y1="18" x2="15" y2="18"/><line x1="-15" y1="28" x2="15" y2="28"/><line x1="-15" y1="38" x2="15" y2="38"/></g>
+    <path d="M0,52 L0,72 L16,72" fill="none" stroke="#7f8790" stroke-width="5"/></g>`,
+  // Batería
+  BATTERY:`<g stroke="#333" stroke-width="4"><rect x="-92" y="-50" width="184" height="116" rx="10" fill="{C}"/>
+    <rect x="-92" y="-50" width="184" height="30" rx="10" fill="#2b2f33"/><rect x="-70" y="-70" width="28" height="22" rx="3" fill="#c0392b"/>
+    <rect x="42" y="-70" width="28" height="22" rx="3" fill="#20242a"/>
+    <g fill="#fff" stroke="none"><rect x="-64" y="-4" width="24" height="6"/><rect x="-55" y="-13" width="6" height="24"/><rect x="40" y="-4" width="24" height="6"/></g>
+    <rect x="-30" y="18" width="60" height="34" rx="5" fill="#eef1f3" stroke-width="2"/></g>`,
+  // Correa de distribución (dentada)
+  BELT:`<g><ellipse rx="100" ry="62" fill="none" stroke="#2f3336" stroke-width="24"/><ellipse rx="100" ry="62" fill="none" stroke="{C}" stroke-width="24" stroke-dasharray="4 13"/>
+    <ellipse rx="76" ry="38" fill="none" stroke="#2f3336" stroke-width="3"/></g>`,
+  // Bomba (de agua / aceite)
+  PUMP:`<g stroke="#5b636b" stroke-width="4"><circle r="64" fill="#b8bfc6"/><circle r="40" fill="#9aa3ad"/>
+    <g stroke="#cfd6db" stroke-width="7" fill="none"><path d="M0,0 L0,-36"/><path d="M0,0 L31,18"/><path d="M0,0 L-31,18"/><path d="M0,0 L31,-18"/><path d="M0,0 L-31,-18"/><path d="M0,0 L0,36"/></g>
+    <circle r="12" fill="{C}" stroke="none"/><rect x="-14" y="-98" width="28" height="40" rx="4" fill="#aeb6bd"/>
+    <g fill="#7f8790" stroke="none"><circle cx="0" cy="-58" r="5"/><circle cx="50" cy="30" r="5"/><circle cx="-50" cy="30" r="5"/><circle cx="50" cy="-30" r="5"/><circle cx="-50" cy="-30" r="5"/></g></g>`,
+  // Radiador
+  RADIATOR:`<g stroke="#5b636b" stroke-width="4"><rect x="-104" y="-70" width="208" height="140" rx="8" fill="#cfd6db"/>
+    <rect x="-104" y="-70" width="208" height="20" rx="6" fill="{C}"/><rect x="-104" y="50" width="208" height="20" rx="6" fill="{C}"/>
+    <g stroke="#9aa3ad" stroke-width="4"><line x1="-84" y1="-46" x2="-84" y2="46"/><line x1="-64" y1="-46" x2="-64" y2="46"/><line x1="-44" y1="-46" x2="-44" y2="46"/><line x1="-24" y1="-46" x2="-24" y2="46"/><line x1="-4" y1="-46" x2="-4" y2="46"/><line x1="16" y1="-46" x2="16" y2="46"/><line x1="36" y1="-46" x2="36" y2="46"/><line x1="56" y1="-46" x2="56" y2="46"/><line x1="76" y1="-46" x2="76" y2="46"/></g>
+    <rect x="66" y="-88" width="22" height="20" rx="4" fill="#aeb6bd"/></g>`,
+  // Silenciador / catalizador
+  MUFFLER:`<g stroke="#5b636b" stroke-width="4"><rect x="-70" y="-38" width="140" height="76" rx="34" fill="#b8bfc6"/>
+    <ellipse cx="-70" cy="0" rx="11" ry="38" fill="#cfd6db"/><ellipse cx="70" cy="0" rx="11" ry="38" fill="#cfd6db"/>
+    <rect x="-120" y="-9" width="54" height="18" rx="9" fill="#9aa3ad"/><rect x="66" y="-9" width="54" height="18" rx="9" fill="#9aa3ad"/>
+    <rect x="-40" y="-38" width="14" height="76" fill="{C}" stroke="none"/><rect x="26" y="-38" width="14" height="76" fill="{C}" stroke="none"/></g>`,
+  // Bobina de encendido
+  COIL:`<g stroke="#5b636b" stroke-width="4"><rect x="-40" y="-62" width="80" height="92" rx="10" fill="{C}"/>
+    <rect x="-22" y="30" width="44" height="36" rx="6" fill="#2b2f33"/><rect x="34" y="-48" width="34" height="28" rx="5" fill="#2b2f33"/>
+    <rect x="-30" y="-50" width="60" height="12" rx="4" fill="#fff" fill-opacity="0.3" stroke="none"/></g>`,
+  // Sensor (lambda / oxígeno)
+  SENSOR:`<g stroke="#5b636b" stroke-width="4"><polygon points="-26,-4 -13,-26 13,-26 26,-4 13,18 -13,18" fill="#9aa3ad"/>
+    <rect x="-14" y="18" width="28" height="40" fill="#aeb6bd"/><g stroke="#8b939b" stroke-width="2"><line x1="-14" y1="28" x2="14" y2="28"/><line x1="-14" y1="40" x2="14" y2="40"/></g>
+    <rect x="-11" y="-64" width="22" height="40" rx="4" fill="#cfd6db"/><path d="M0,-64 Q30,-88 64,-78" fill="none" stroke="{C}" stroke-width="8"/>
+    <rect x="58" y="-90" width="26" height="22" rx="4" fill="#2b2f33"/></g>`,
+  // Rótula de suspensión
+  BALLJOINT:`<g stroke="#5b636b" stroke-width="4"><circle cx="0" cy="12" r="46" fill="#b8bfc6"/><ellipse cx="0" cy="-40" rx="17" ry="26" fill="#2b2f33"/>
+    <rect x="-9" y="-92" width="18" height="52" fill="#9aa3ad"/><polygon points="-14,-92 14,-92 11,-104 -11,-104" fill="#7f8790"/>
+    <circle cx="0" cy="12" r="18" fill="{C}" stroke="none"/></g>`,
+  // Brazo de suspensión
+  CONTROLARM:`<g stroke="#5b636b" stroke-width="4"><path d="M-96,44 Q-24,-30 88,-22 L96,10 Q4,6 -66,60 Z" fill="#9aa3ad"/>
+    <circle cx="-90" cy="50" r="18" fill="#cfd6db"/><circle cx="86" cy="-8" r="18" fill="#cfd6db"/><circle cx="-60" cy="54" r="12" fill="{C}" stroke="none"/></g>`,
+  // Filtro de combustible (en línea) / cilindro pequeño
+  FUELFILTER:`<g stroke="#5b636b" stroke-width="4"><rect x="-70" y="-34" width="140" height="68" rx="30" fill="#b8bfc6"/>
+    <rect x="-70" y="-34" width="140" height="68" rx="30" fill="{C}" fill-opacity="0.25"/><rect x="-106" y="-8" width="42" height="16" rx="8" fill="#9aa3ad"/>
+    <rect x="64" y="-8" width="42" height="16" rx="8" fill="#9aa3ad"/><path d="M-18,0 L14,0 M4,-9 L16,0 L4,9" fill="none" stroke="{C}" stroke-width="4"/></g>`,
+  // Junta de culata
+  GASKET:`<g stroke="#5b636b" stroke-width="3"><rect x="-108" y="-52" width="216" height="104" rx="12" fill="{C}" fill-opacity="0.9"/>
+    <g fill="#eef1f3"><circle cx="-66" cy="0" r="26"/><circle cx="-22" cy="0" r="26"/><circle cx="22" cy="0" r="26"/><circle cx="66" cy="0" r="26"/></g>
+    <g fill="#cfd6db" stroke-width="2"><circle cx="-96" cy="-40" r="6"/><circle cx="96" cy="-40" r="6"/><circle cx="-96" cy="40" r="6"/><circle cx="96" cy="40" r="6"/></g></g>`,
+  // Turbocompresor
+  TURBO:`<g stroke="#5b636b" stroke-width="4"><path d="M40,-28 A50,50 0 1,0 40,28 L98,20 L98,-20 Z" fill="#9aa3ad"/>
+    <circle cx="-16" cy="0" r="62" fill="#b8bfc6"/><circle cx="-16" cy="0" r="34" fill="#cfd6db"/>
+    <g stroke="#8b939b" stroke-width="5" fill="none"><path d="M-16,0 L-16,-30"/><path d="M-16,0 L26,15"/><path d="M-16,0 L26,-15"/><path d="M-16,0 L-42,20"/><path d="M-16,0 L-42,-20"/></g>
+    <circle cx="-16" cy="0" r="11" fill="{C}" stroke="none"/><rect x="-30" y="-96" width="30" height="40" rx="4" fill="#aeb6bd"/></g>`,
+  // Termostato
+  THERMOSTAT:`<g stroke="#5b636b" stroke-width="4"><circle r="58" fill="#b8bfc6"/><circle r="40" fill="#cfd6db"/><circle r="22" fill="{C}"/>
+    <rect x="-8" y="40" width="16" height="42" fill="#9aa3ad"/><path d="M-14,58 h28 M-14,70 h28" stroke="#8b939b" stroke-width="4"/>
+    <g fill="#7f8790" stroke="none"><circle cx="0" cy="-48" r="5"/><circle cx="42" cy="24" r="5"/><circle cx="-42" cy="24" r="5"/></g></g>`,
+  // Ventilador de radiador
+  FAN:`<g stroke="#5b636b" stroke-width="4"><rect x="-96" y="-96" width="192" height="192" rx="18" fill="{C}" fill-opacity="0.18"/>
+    <circle r="90" fill="none" stroke="#8b939b" stroke-width="4"/>
+    <g fill="#9aa3ad" stroke="#5b636b" stroke-width="2"><path d="M0,0 Q42,-18 80,6 Q42,26 0,12 Z" transform="rotate(0)"/><path d="M0,0 Q42,-18 80,6 Q42,26 0,12 Z" transform="rotate(72)"/><path d="M0,0 Q42,-18 80,6 Q42,26 0,12 Z" transform="rotate(144)"/><path d="M0,0 Q42,-18 80,6 Q42,26 0,12 Z" transform="rotate(216)"/><path d="M0,0 Q42,-18 80,6 Q42,26 0,12 Z" transform="rotate(288)"/></g>
+    <circle r="22" fill="#b8bfc6" stroke-width="3"/><circle r="8" fill="{C}" stroke="none"/></g>`,
+  // Retrovisor exterior
+  MIRROR:`<g stroke="#5b636b" stroke-width="4"><rect x="-92" y="-52" width="184" height="104" rx="34" fill="{C}"/>
+    <rect x="-74" y="-38" width="150" height="76" rx="24" fill="#a9c6d6"/><path d="M-60,-18 L44,26" stroke="#fff" stroke-opacity="0.55" stroke-width="9"/>
+    <rect x="-110" y="-9" width="22" height="18" rx="4" fill="#8b939b"/></g>`,
+  // Faro delantero
+  HEADLIGHT:`<g stroke="#5b636b" stroke-width="4"><path d="M-102,-46 L74,-56 Q100,-58 98,-30 L94,40 Q92,56 66,52 L-94,42 Q-106,40 -102,10 Z" fill="#dfe6ea"/>
+    <ellipse cx="-36" cy="-2" rx="36" ry="36" fill="#f6f9fa" stroke="#8b939b" stroke-width="3"/><ellipse cx="-36" cy="-2" rx="14" ry="14" fill="{C}" stroke="none"/>
+    <ellipse cx="48" cy="0" rx="24" ry="28" fill="#f6f9fa" stroke="#8b939b" stroke-width="3"/><ellipse cx="48" cy="0" rx="9" ry="11" fill="{C}" stroke="none"/></g>`,
+  // Palier de transmisión
+  DRIVESHAFT:`<g stroke="#5b636b" stroke-width="4"><rect x="-40" y="-9" width="80" height="18" fill="#aeb6bd"/>
+    <path d="M-40,-26 L-92,-18 L-92,18 L-40,26 Z" fill="#2b2f33"/><path d="M40,-22 L86,-15 L86,15 L40,22 Z" fill="#2b2f33"/>
+    <circle cx="-96" cy="0" r="30" fill="#9aa3ad"/><circle cx="90" cy="0" r="24" fill="#9aa3ad"/>
+    <circle cx="-96" cy="0" r="11" fill="{C}" stroke="none"/><circle cx="90" cy="0" r="9" fill="{C}" stroke="none"/></g>`,
+  // Cremallera de dirección
+  STEERINGRACK:`<g stroke="#5b636b" stroke-width="4"><rect x="-112" y="-14" width="224" height="28" rx="14" fill="#9aa3ad"/>
+    <rect x="-150" y="-6" width="46" height="12" rx="6" fill="#aeb6bd"/><circle cx="-152" cy="0" r="13" fill="#8b939b"/>
+    <rect x="104" y="-6" width="46" height="12" rx="6" fill="#aeb6bd"/><circle cx="152" cy="0" r="13" fill="#8b939b"/>
+    <circle cx="-24" cy="0" r="26" fill="#b8bfc6"/><circle cx="-24" cy="0" r="9" fill="{C}" stroke="none"/></g>`,
+  // Bomba de dirección asistida (con polea)
+  PSPUMP:`<g stroke="#5b636b" stroke-width="4"><circle cx="22" cy="0" r="60" fill="#b8bfc6"/><rect x="0" y="-92" width="44" height="30" rx="6" fill="{C}"/>
+    <circle cx="-42" cy="0" r="46" fill="#9aa3ad"/><circle cx="-42" cy="0" r="32" fill="#cfd6db"/><circle cx="-42" cy="0" r="20" fill="#9aa3ad"/>
+    <circle cx="-42" cy="0" r="9" fill="{C}" stroke="none"/></g>`
+};
+// Mapa: id de producto -> dibujo
+const MAPA_DIBUJO = {1:'PAD',2:'DISC',3:'CLUTCH',4:'OILFILTER',5:'AIRFILTER',6:'SHOCK',7:'SPARK',8:'BATTERY',
+  9:'BELT',10:'PUMP',11:'RADIATOR',12:'MUFFLER',13:'MUFFLER',14:'DISC',15:'COIL',16:'SENSOR',17:'BALLJOINT',
+  18:'CONTROLARM',19:'FUELFILTER',20:'AIRFILTER',21:'DISC',22:'FUELFILTER',23:'PUMP',24:'GASKET',25:'TURBO',
+  26:'THERMOSTAT',27:'FAN',28:'MIRROR',29:'HEADLIGHT',30:'DRIVESHAFT',31:'STEERINGRACK',32:'PSPUMP'};
+// Fallback por categoría (para productos nuevos creados desde el admin)
+const MAPA_DIBUJO_CAT = {frenos:'DISC',motor:'GASKET',suspension:'SHOCK',filtros:'OILFILTER',embrague:'CLUTCH',
+  electrico:'COIL',carroceria:'MIRROR',escape:'MUFFLER',refrigeracion:'RADIATOR',transmision:'DRIVESHAFT'};
+
+const Util = {
+  // Formatea un número como precio en dólares
+  precio(n){ return '$' + Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); },
+  // Devuelve la categoría por id
+  categoria(id){ return CATEGORIAS.find(c=>c.id===id) || {nombre:id,icono:'fa-box',color:'#888'}; },
+  // Clase e info del nivel de stock
+  nivelStock(stock){
+    if(stock<=0)  return {clase:'stock-nulo',  texto:'Agotado',            corto:'Agotado'};
+    if(stock<5)   return {clase:'stock-medio', texto:'¡Pocas unidades! ('+stock+')', corto:stock+' uds'};
+    return {clase:'stock-alto', texto:'En stock ('+stock+' uds)', corto:'Disponible'};
+  },
+  // Genera la imagen del producto: ilustración vectorial de la pieza real sobre un fondo
+  // con degradado suave del color de su categoría. Sin dependencia de red (100% offline).
+  placeholder(prod){
+    const c = Util.categoria(prod.categoria).color;
+    return `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${Util.esc(prod.nombre)}">
+      <defs>
+        <linearGradient id="g${prod.id}" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#ffffff"/>
+          <stop offset="1" stop-color="${c}" stop-opacity="0.16"/>
+        </linearGradient>
+        <pattern id="p${prod.id}" width="24" height="24" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2="24" stroke="${c}" stroke-opacity="0.05" stroke-width="9"/>
+        </pattern>
+      </defs>
+      <rect width="400" height="300" fill="url(#g${prod.id})"/>
+      <rect width="400" height="300" fill="url(#p${prod.id})"/>
+      <g transform="translate(200,150)">${Util.dibujoParte(prod)}</g>
+    </svg>`;
+  },
+  // Devuelve la ilustración SVG de la pieza (por id de producto, o por categoría como respaldo),
+  // con el color de acento {C} ya sustituido por el de su categoría.
+  dibujoParte(prod){
+    const c = Util.categoria(prod.categoria).color;
+    const clave = MAPA_DIBUJO[prod.id] || MAPA_DIBUJO_CAT[prod.categoria] || 'OILFILTER';
+    return (DIBUJOS[clave] || '').replace(/\{C\}/g, c);
+  },
+  // Devuelve un grupo SVG (centrado en 0,0, ~60px) que representa cada categoría de repuesto.
+  // Son paths dibujados: no dependen de ninguna fuente, se ven igual siempre y sin red.
+  iconoSvg(catId){
+    const iconos = {
+      // Frenos: disco de freno perforado
+      frenos:`<circle r="30" fill="none" stroke="currentColor" stroke-width="7"/><circle r="12" fill="currentColor"/>
+        <circle cx="0" cy="-21" r="3.5" fill="#fff"/><circle cx="18" cy="10" r="3.5" fill="#fff"/><circle cx="-18" cy="10" r="3.5" fill="#fff"/>`,
+      // Motor: bloque con pistón
+      motor:`<rect x="-28" y="-8" width="56" height="30" rx="4" fill="currentColor"/><rect x="-10" y="-30" width="20" height="24" rx="3" fill="currentColor"/>
+        <rect x="-6" y="-26" width="12" height="8" fill="#fff" opacity="0.5"/>`,
+      // Suspensión: muelle
+      suspension:`<path d="M0,-30 L-14,-20 L14,-10 L-14,0 L14,10 L-14,20 L0,30" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round"/>`,
+      // Filtros: filtro con pliegues
+      filtros:`<rect x="-24" y="-26" width="48" height="52" rx="6" fill="none" stroke="currentColor" stroke-width="6"/>
+        <line x1="-10" y1="-26" x2="-10" y2="26" stroke="currentColor" stroke-width="5"/><line x1="10" y1="-26" x2="10" y2="26" stroke="currentColor" stroke-width="5"/>`,
+      // Embrague: disco de embrague
+      embrague:`<circle r="30" fill="none" stroke="currentColor" stroke-width="6"/><circle r="9" fill="currentColor"/>
+        <g stroke="currentColor" stroke-width="5"><line x1="0" y1="-30" x2="0" y2="-20"/><line x1="0" y1="30" x2="0" y2="20"/><line x1="-30" y1="0" x2="-20" y2="0"/><line x1="30" y1="0" x2="20" y2="0"/></g>`,
+      // Eléctrico: rayo
+      electrico:`<path d="M6,-32 L-16,6 L-2,6 L-8,32 L18,-8 L2,-8 Z" fill="currentColor"/>`,
+      // Carrocería: silueta de coche
+      carroceria:`<path d="M-32,8 L-24,-8 Q-22,-14 -14,-14 L14,-14 Q22,-14 26,-6 L32,6 L32,14 L-32,14 Z" fill="currentColor"/>
+        <circle cx="-16" cy="14" r="7" fill="currentColor" stroke="#fff" stroke-width="3"/><circle cx="16" cy="14" r="7" fill="currentColor" stroke="#fff" stroke-width="3"/>`,
+      // Escape: tubo con humo
+      escape:`<rect x="-30" y="-4" width="46" height="16" rx="8" fill="currentColor"/><circle cx="22" cy="4" r="9" fill="none" stroke="currentColor" stroke-width="5"/>
+        <circle cx="-24" cy="-16" r="5" fill="currentColor" opacity="0.5"/><circle cx="-14" cy="-24" r="4" fill="currentColor" opacity="0.35"/>`,
+      // Refrigeración: gota
+      refrigeracion:`<path d="M0,-30 C14,-8 20,2 20,12 A20,20 0 1,1 -20,12 C-20,2 -14,-8 0,-30 Z" fill="none" stroke="currentColor" stroke-width="6"/>
+        <path d="M0,-4 C8,8 10,12 10,16 A10,10 0 1,1 -10,16 C-10,12 -8,8 0,-4 Z" fill="currentColor"/>`,
+      // Transmisión: dos engranajes
+      transmision:`<circle cx="-8" cy="-8" r="15" fill="none" stroke="currentColor" stroke-width="6"/><circle cx="-8" cy="-8" r="5" fill="currentColor"/>
+        <circle cx="16" cy="14" r="11" fill="none" stroke="currentColor" stroke-width="5"/><circle cx="16" cy="14" r="3.5" fill="currentColor"/>`
+    };
+    return iconos[catId] || `<circle r="24" fill="none" stroke="currentColor" stroke-width="6"/>`;
+  },
+  // Escapa texto para insertar en HTML
+  esc(s){ return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+};
+
+/* =========================================================================
+   ============  TOASTS (notificaciones)  ==================================
+   ========================================================================= */
+const Toast = {
+  mostrar(mensaje, tipo='info'){
+    const cont = document.getElementById('toasts');
+    const iconos = {exito:'fa-circle-check', error:'fa-circle-exclamation', info:'fa-circle-info'};
+    const el = document.createElement('div');
+    el.className = 'toast toast-'+tipo;
+    el.innerHTML = `<i class="fa-solid ${iconos[tipo]}"></i><span>${Util.esc(mensaje)}</span>
+      <i class="fa-solid fa-xmark toast-cerrar"></i>`;
+    el.querySelector('.toast-cerrar').onclick = ()=>Toast.quitar(el);
+    cont.appendChild(el);
+    setTimeout(()=>Toast.quitar(el), 3000); // auto-dismiss a los 3s
+  },
+  quitar(el){
+    if(!el || el.classList.contains('saliendo')) return;
+    el.classList.add('saliendo');
+    setTimeout(()=>el.remove(), 350);
+  },
+  exito(m){ this.mostrar(m,'exito'); },
+  error(m){ this.mostrar(m,'error'); },
+  info(m){  this.mostrar(m,'info'); }
+};
+
+/* =========================================================================
+   ============  APP (arranque, tema, navegación)  =========================
+   ========================================================================= */
+const App = {
+  init(){
+    Estado.cargar();
+    // Coloca el logo oficial (data URI) en header y footer
+    document.getElementById('logoHeader').src = LOGO_URI;
+    document.getElementById('logoFooter').src = LOGO_URI;
+    // Tema guardado
+    const tema = localStorage.getItem(LS.TEMA) || 'claro';
+    document.documentElement.setAttribute('data-tema', tema);
+    App.iconoTema(tema);
+    // Construcción inicial de la interfaz
+    BuscadorVehiculo.initMarcas();
+    Catalogo.initFiltros();
+    Catalogo.render();
+    Ofertas.render();
+    App.renderFooterCategorias();
+    Carrito.actualizarContador();
+    Favoritos.actualizarContador();
+    App.initWhatsapp();
+  },
+  // Alterna tema claro/oscuro
+  toggleTema(){
+    const actual = document.documentElement.getAttribute('data-tema');
+    const nuevo = actual==='oscuro' ? 'claro' : 'oscuro';
+    document.documentElement.setAttribute('data-tema', nuevo);
+    localStorage.setItem(LS.TEMA, nuevo);
+    App.iconoTema(nuevo);
+  },
+  iconoTema(tema){
+    document.querySelector('#btnTema i').className = tema==='oscuro' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+  },
+  irInicio(){ window.scrollTo({top:0,behavior:'smooth'}); },
+  // Cierra cualquier panel/modal abierto
+  cerrarTodo(){
+    Carrito.cerrar(); Producto.cerrar(); Checkout.cerrar(); Admin.cerrar();
+    Catalogo.cerrarFiltrosMovil();
+  },
+  // Enlaza el botón flotante de WhatsApp
+  initWhatsapp(){
+    const msg = encodeURIComponent('Hola Repuestos Guaicaipuro, quiero información sobre repuestos para mi vehículo.');
+    document.getElementById('whatsappFlotante').href = 'https://wa.me/584121234567?text='+msg;
+    document.getElementById('whatsappFlotante').target = '_blank';
+  },
+  // Pinta la lista de categorías en el footer
+  renderFooterCategorias(){
+    document.getElementById('footerCategorias').innerHTML = CATEGORIAS.slice(0,6).map(c=>
+      `<li><a href="#catalogo" onclick="Catalogo.filtrarPorCategoria('${c.id}')"><i class="fa-solid fa-chevron-right"></i> ${c.nombre}</a></li>`
+    ).join('');
+  }
+};
+
+/* =========================================================================
+   ============  BUSCADOR POR VEHÍCULO  ====================================
+   ========================================================================= */
+const BuscadorVehiculo = {
+  // Rellena el selector de marcas
+  initMarcas(){
+    const sel = document.getElementById('bvMarca');
+    Object.keys(VEHICULOS).forEach(m=>{
+      sel.insertAdjacentHTML('beforeend', `<option value="${m}">${m}</option>`);
+    });
+  },
+  // Al elegir marca, carga sus modelos
+  cargarModelos(){
+    const marca = document.getElementById('bvMarca').value;
+    const selMod = document.getElementById('bvModelo');
+    const selAnio = document.getElementById('bvAnio');
+    selMod.innerHTML = '<option value="">Elige modelo...</option>';
+    selAnio.innerHTML = '<option value="">Elige año...</option>';
+    selAnio.disabled = true;
+    if(!marca){ selMod.disabled = true; return; }
+    Object.keys(VEHICULOS[marca]).forEach(mod=>{
+      selMod.insertAdjacentHTML('beforeend', `<option value="${mod}">${mod}</option>`);
+    });
+    selMod.disabled = false;
+  },
+  // Al elegir modelo, carga los años según el rango de compatibilidad
+  cargarAnios(){
+    const marca = document.getElementById('bvMarca').value;
+    const modelo = document.getElementById('bvModelo').value;
+    const selAnio = document.getElementById('bvAnio');
+    selAnio.innerHTML = '<option value="">Elige año...</option>';
+    if(!modelo){ selAnio.disabled = true; return; }
+    const [desde,hasta] = VEHICULOS[marca][modelo];
+    for(let a=hasta; a>=desde; a--){
+      selAnio.insertAdjacentHTML('beforeend', `<option value="${a}">${a}</option>`);
+    }
+    selAnio.disabled = false;
+  },
+  // Ejecuta la búsqueda por vehículo (filtra el catálogo)
+  buscar(){
+    const marca = document.getElementById('bvMarca').value;
+    const modelo = document.getElementById('bvModelo').value;
+    const anio = document.getElementById('bvAnio').value;
+    if(!marca || !modelo){ Toast.error('Selecciona al menos marca y modelo'); return; }
+    Estado.filtroVehiculo = {marca, modelo, anio: anio||null};
+    Estado.filtroBusqueda = '';
+    document.getElementById('buscadorTexto').value = '';
+    // Muestra el chip del vehículo activo
+    const chip = document.getElementById('vehiculoActivo');
+    chip.classList.add('visible');
+    document.getElementById('vehiculoActivoTxt').textContent =
+      `${marca} ${modelo}${anio?' '+anio:''}`;
+    Catalogo.render();
+    Toast.info(`Viendo repuestos para ${marca} ${modelo}${anio?' '+anio:''}`);
+    document.getElementById('catalogo').scrollIntoView({behavior:'smooth'});
+  },
+  // Quita el filtro de vehículo
+  limpiar(){
+    Estado.filtroVehiculo = null;
+    document.getElementById('vehiculoActivo').classList.remove('visible');
+    document.getElementById('bvMarca').value = '';
+    BuscadorVehiculo.cargarModelos();
+    Catalogo.render();
+    Toast.info('Filtro de vehículo eliminado');
+  }
+};
+
+/* =========================================================================
+   ============  BUSCADOR DE TEXTO + AUTOCOMPLETADO  =======================
+   ========================================================================= */
+const Buscador = {
+  autocompletar(texto){
+    const cont = document.getElementById('autocompletado');
+    texto = texto.trim().toLowerCase();
+    if(texto.length < 2){ cont.classList.add('oculto'); return; }
+    // Coincidencias por nombre o referencia
+    const res = Estado.productos.filter(p=>
+      p.nombre.toLowerCase().includes(texto) || p.ref.toLowerCase().includes(texto)
+    ).slice(0,6);
+    if(res.length===0){ cont.classList.add('oculto'); return; }
+    cont.innerHTML = res.map(p=>`
+      <button onclick="Buscador.elegir(${p.id})">
+        <div class="ac-img">${Util.placeholder(p)}</div>
+        <div>
+          <div class="ac-nom">${Util.esc(p.nombre)}</div>
+          <div class="ac-ref">Ref: ${p.ref} · ${p.marca}</div>
+        </div>
+        <div class="ac-precio">${Util.precio(p.precio)}</div>
+      </button>`).join('');
+    cont.classList.remove('oculto');
+  },
+  elegir(id){
+    document.getElementById('autocompletado').classList.add('oculto');
+    document.getElementById('buscadorTexto').value = '';
+    Producto.abrir(id);
+  },
+  buscar(texto){
+    document.getElementById('autocompletado').classList.add('oculto');
+    Estado.filtroBusqueda = texto.trim();
+    Estado.filtroVehiculo = null;
+    document.getElementById('vehiculoActivo').classList.remove('visible');
+    Catalogo.render();
+    document.getElementById('catalogo').scrollIntoView({behavior:'smooth'});
+    if(texto.trim()) Toast.info(`Resultados para "${texto.trim()}"`);
+  }
+};
+
+/* =========================================================================
+   ============  CATÁLOGO (filtros, orden, render)  ========================
+   ========================================================================= */
+const Catalogo = {
+  filtros:{ categorias:[], marcas:[], precioMin:0, precioMax:450 },
+
+  // Construye las opciones de filtro (categorías y marcas) con su conteo
+  initFiltros(){
+    const contCat = document.getElementById('filtroCategorias');
+    contCat.innerHTML = CATEGORIAS.map(c=>{
+      const n = Estado.productos.filter(p=>p.categoria===c.id).length;
+      return `<label class="filtro-opcion">
+        <input type="checkbox" value="${c.id}" onchange="Catalogo.toggleCategoria('${c.id}',this.checked)">
+        <i class="fa-solid ${c.icono}" style="color:${c.color};width:16px"></i> ${c.nombre}
+        <span class="cuenta">${n}</span></label>`;
+    }).join('');
+    const contMar = document.getElementById('filtroMarcas');
+    contMar.innerHTML = MARCAS_REPUESTO.map(m=>{
+      const n = Estado.productos.filter(p=>p.marca===m).length;
+      return `<label class="filtro-opcion">
+        <input type="checkbox" value="${m}" onchange="Catalogo.toggleMarca('${m}',this.checked)">
+        ${m} <span class="cuenta">${n}</span></label>`;
+    }).join('');
+    Catalogo.actualizarRango();
+  },
+  toggleCategoria(id, on){
+    if(on) this.filtros.categorias.push(id);
+    else this.filtros.categorias = this.filtros.categorias.filter(x=>x!==id);
+    this.render();
+  },
+  toggleMarca(m, on){
+    if(on) this.filtros.marcas.push(m);
+    else this.filtros.marcas = this.filtros.marcas.filter(x=>x!==m);
+    this.render();
+  },
+  // Slider de precio doble (asegura min<=max) y pinta el track activo
+  actualizarRango(){
+    let min = parseInt(document.getElementById('precioMin').value);
+    let max = parseInt(document.getElementById('precioMax').value);
+    if(min > max){ [min,max]=[max,min];
+      document.getElementById('precioMin').value=min; document.getElementById('precioMax').value=max; }
+    this.filtros.precioMin = min; this.filtros.precioMax = max;
+    document.getElementById('rangoMin').textContent = '$'+min;
+    document.getElementById('rangoMax').textContent = '$'+max;
+    const track = document.getElementById('rangoTrackActivo');
+    track.style.left = (min/450*100)+'%';
+    track.style.right = (100 - max/450*100)+'%';
+    this.render();
+  },
+  // Aplica todos los filtros activos y devuelve el listado ordenado
+  obtenerFiltrados(){
+    let lista = Estado.productos.slice();
+    // Filtro por vehículo
+    if(Estado.filtroVehiculo){
+      const {marca,modelo} = Estado.filtroVehiculo;
+      lista = lista.filter(p=>p.compat.some(c=>c.marca===marca && c.modelo===modelo));
+    }
+    // Filtro por texto
+    if(Estado.filtroBusqueda){
+      const t = Estado.filtroBusqueda.toLowerCase();
+      lista = lista.filter(p=>p.nombre.toLowerCase().includes(t) || p.ref.toLowerCase().includes(t)
+        || p.marca.toLowerCase().includes(t));
+    }
+    // Filtro por categoría
+    if(this.filtros.categorias.length)
+      lista = lista.filter(p=>this.filtros.categorias.includes(p.categoria));
+    // Filtro por marca del repuesto
+    if(this.filtros.marcas.length)
+      lista = lista.filter(p=>this.filtros.marcas.includes(p.marca));
+    // Filtro por precio
+    lista = lista.filter(p=>p.precio>=this.filtros.precioMin && p.precio<=this.filtros.precioMax);
+    // Ordenamiento
+    const orden = document.getElementById('ordenSelect').value;
+    if(orden==='precio-asc') lista.sort((a,b)=>a.precio-b.precio);
+    else if(orden==='precio-desc') lista.sort((a,b)=>b.precio-a.precio);
+    else if(orden==='nombre') lista.sort((a,b)=>a.nombre.localeCompare(b.nombre));
+    else if(orden==='vendidos') lista.sort((a,b)=>b.vendidos-a.vendidos);
+    return lista;
+  },
+  // Pinta el grid de productos
+  render(){
+    const lista = this.obtenerFiltrados();
+    document.getElementById('conteoProductos').textContent = lista.length;
+    // Subtítulo dinámico
+    let sub = 'Todas las categorías';
+    if(Estado.filtroVehiculo){ const v=Estado.filtroVehiculo; sub=`Compatibles con ${v.marca} ${v.modelo}${v.anio?' '+v.anio:''}`; }
+    else if(Estado.filtroBusqueda){ sub=`Búsqueda: "${Estado.filtroBusqueda}"`; }
+    else if(this.filtros.categorias.length===1){ sub=Util.categoria(this.filtros.categorias[0]).nombre; }
+    document.getElementById('catalogoSubtitulo').textContent = sub;
+    const grid = document.getElementById('productosGrid');
+    if(lista.length===0){
+      grid.innerHTML = `<div class="sin-resultados">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <h3>Sin resultados</h3>
+        <p>No encontramos repuestos con esos filtros. Prueba a limpiarlos.</p></div>`;
+      return;
+    }
+    grid.innerHTML = lista.map(p=>Catalogo.tarjeta(p)).join('');
+  },
+  // HTML de una tarjeta de producto
+  tarjeta(p){
+    const nivel = Util.nivelStock(p.stock);
+    const esFav = Estado.favoritos.includes(p.id);
+    const descuento = p.precioAntes ? Math.round((1 - p.precio/p.precioAntes)*100) : 0;
+    // Marcas de coche compatibles (únicas)
+    const marcasCoche = [...new Set(p.compat.map(c=>c.marca))].slice(0,3);
+    return `<article class="card">
+      <div class="card-img" onclick="Producto.abrir(${p.id})">
+        ${Util.placeholder(p)}
+        <div class="card-badges">
+          ${descuento>0?`<span class="badge badge-desc">-${descuento}%</span>`:''}
+          ${p.vendidos>200?`<span class="badge badge-top">Top ventas</span>`:''}
+        </div>
+        <button class="card-fav ${esFav?'activo':''}" onclick="event.stopPropagation();Favoritos.toggle(${p.id},this)" title="Favorito">
+          <i class="fa-${esFav?'solid':'regular'} fa-heart"></i>
+        </button>
+        <div class="card-vista"><span><i class="fa-solid fa-eye"></i> Vista rápida</span></div>
+      </div>
+      <div class="card-cuerpo">
+        <div class="card-cat">${Util.categoria(p.categoria).nombre}</div>
+        <h3 class="card-nombre" onclick="Producto.abrir(${p.id})">${Util.esc(p.nombre)}</h3>
+        <div class="card-ref">Ref: ${p.ref} · <span class="marca-rep">${p.marca}</span></div>
+        <div class="card-compat">
+          ${marcasCoche.map(m=>`<span class="chip-compat">${m}</span>`).join('')}
+        </div>
+        <div class="card-stock ${nivel.clase}"><span class="punto"></span> ${nivel.texto}</div>
+        <div class="card-pie">
+          <div class="card-precio">
+            ${p.precioAntes?`<span class="antes">${Util.precio(p.precioAntes)}</span>`:''}
+            ${Util.precio(p.precio)}
+          </div>
+          <button class="btn-add" ${p.stock<=0?'disabled':''}
+            onclick="Carrito.agregar(${p.id},1,this)" title="Añadir al carrito">
+            <i class="fa-solid fa-cart-plus"></i>
+          </button>
+        </div>
+      </div>
+    </article>`;
+  },
+  // Filtros: limpiar todo
+  limpiarFiltros(){
+    this.filtros = {categorias:[],marcas:[],precioMin:0,precioMax:450};
+    document.querySelectorAll('#filtroCategorias input,#filtroMarcas input').forEach(i=>i.checked=false);
+    document.getElementById('precioMin').value=0;
+    document.getElementById('precioMax').value=450;
+    Estado.filtroBusqueda=''; Estado.filtroVehiculo=null;
+    document.getElementById('vehiculoActivo').classList.remove('visible');
+    this.actualizarRango();
+    Toast.info('Filtros restablecidos');
+  },
+  // Atajo: filtrar por una categoría concreta (desde el footer)
+  filtrarPorCategoria(id){
+    this.limpiarFiltrosSilencioso();
+    this.filtros.categorias=[id];
+    const chk = document.querySelector(`#filtroCategorias input[value="${id}"]`);
+    if(chk) chk.checked=true;
+    this.render();
+    document.getElementById('catalogo').scrollIntoView({behavior:'smooth'});
+  },
+  limpiarFiltrosSilencioso(){
+    this.filtros={categorias:[],marcas:[],precioMin:0,precioMax:450};
+    document.querySelectorAll('#filtroCategorias input,#filtroMarcas input').forEach(i=>i.checked=false);
+    document.getElementById('precioMin').value=0; document.getElementById('precioMax').value=450;
+    Estado.filtroBusqueda=''; Estado.filtroVehiculo=null;
+    document.getElementById('vehiculoActivo').classList.remove('visible');
+    this.actualizarRango();
+  },
+  // Filtros en móvil (panel deslizable)
+  abrirFiltrosMovil(){
+    document.getElementById('filtros').classList.add('abierto');
+    document.getElementById('overlay').classList.add('abierto');
+    document.getElementById('cerrarFiltrosMovil').style.display='block';
+  },
+  cerrarFiltrosMovil(){
+    document.getElementById('filtros').classList.remove('abierto');
+    if(!Carrito.estaAbierto()) document.getElementById('overlay').classList.remove('abierto');
+  }
+};
+
+/* =========================================================================
+   ============  OFERTAS DEL MES  ==========================================
+   ========================================================================= */
+const Ofertas = {
+  render(){
+    const destacados = Estado.productos.filter(p=>p.destacado).slice(0,4);
+    document.getElementById('ofertasGrid').innerHTML = destacados.map(p=>Catalogo.tarjeta(p)).join('');
+  }
+};
+
+/* =========================================================================
+   ============  FAVORITOS  ================================================
+   ========================================================================= */
+const Favoritos = {
+  toggle(id, btn){
+    const i = Estado.favoritos.indexOf(id);
+    if(i>=0){ Estado.favoritos.splice(i,1); Toast.info('Quitado de favoritos'); }
+    else { Estado.favoritos.push(id); Toast.exito('Añadido a favoritos'); }
+    Estado.guardarFav();
+    Favoritos.actualizarContador();
+    // Repinta para reflejar el estado en todas las tarjetas
+    Catalogo.render(); Ofertas.render();
+  },
+  actualizarContador(){
+    const c = document.getElementById('contadorFav');
+    c.textContent = Estado.favoritos.length;
+    c.setAttribute('data-n', Estado.favoritos.length);
+  },
+  abrir(){
+    if(Estado.favoritos.length===0){ Toast.info('Aún no tienes favoritos. Pulsa el corazón en un producto.'); return; }
+    // Filtra el catálogo mostrando solo favoritos
+    Catalogo.limpiarFiltrosSilencioso();
+    const grid = document.getElementById('productosGrid');
+    const favs = Estado.productos.filter(p=>Estado.favoritos.includes(p.id));
+    document.getElementById('conteoProductos').textContent = favs.length;
+    document.getElementById('catalogoSubtitulo').textContent = 'Tus favoritos';
+    grid.innerHTML = favs.map(p=>Catalogo.tarjeta(p)).join('');
+    document.getElementById('catalogo').scrollIntoView({behavior:'smooth'});
+    Toast.info('Mostrando tus favoritos');
+  }
+};
+
+/* =========================================================================
+   ============  MODAL DE PRODUCTO (ficha)  ================================
+   ========================================================================= */
+const Producto = {
+  abrir(id){
+    const p = Estado.producto(id);
+    if(!p) return;
+    const nivel = Util.nivelStock(p.stock);
+    const descuento = p.precioAntes ? Math.round((1 - p.precio/p.precioAntes)*100) : 0;
+    // Vehículos compatibles con su rango de años
+    const compatHTML = p.compat.map(c=>{
+      const rango = VEHICULOS[c.marca] && VEHICULOS[c.marca][c.modelo];
+      const anios = rango ? ` (${rango[0]}-${rango[1]})` : '';
+      return `<span class="chip-compat"><i class="fa-solid fa-car" style="margin-right:5px;color:var(--rojo)"></i>${c.marca} ${c.modelo}${anios}</span>`;
+    }).join('');
+    // Especificaciones técnicas
+    const specsHTML = Object.entries(p.specs).map(([k,v])=>
+      `<tr><td>${Util.esc(k)}</td><td>${Util.esc(v)}</td></tr>`).join('');
+    // Productos relacionados (misma categoría, distinto id)
+    const relacionados = Estado.productos.filter(r=>r.categoria===p.categoria && r.id!==p.id).slice(0,4);
+    const relHTML = relacionados.map(r=>`
+      <div class="rel-card" onclick="Producto.abrir(${r.id})">
+        <div class="rel-img">${Util.placeholder(r)}</div>
+        <div class="rel-cuerpo">
+          <div class="rel-nom">${Util.esc(r.nombre)}</div>
+          <div class="rel-precio">${Util.precio(r.precio)}</div>
+        </div>
+      </div>`).join('');
+
+    document.getElementById('modalProductoContenido').innerHTML = `
+      <div class="ficha">
+        <div class="ficha-img">
+          ${descuento>0?`<span class="badge badge-desc" style="position:absolute;top:16px;left:16px">-${descuento}%</span>`:''}
+          ${Util.placeholder(p)}
+        </div>
+        <div class="ficha-info">
+          <div class="ficha-cat">${Util.categoria(p.categoria).nombre}</div>
+          <h3 class="ficha-nombre">${Util.esc(p.nombre)}</h3>
+          <div class="ficha-meta">
+            <span>Ref: <b>${p.ref}</b></span>
+            <span>Fabricante: <b>${p.marca}</b></span>
+            <span>Vendidos: <b>${p.vendidos}</b></span>
+          </div>
+          <div class="ficha-precio">
+            ${Util.precio(p.precio)}
+            ${p.precioAntes?`<span class="antes">${Util.precio(p.precioAntes)}</span>`:''}
+          </div>
+          <div class="ficha-stock-linea ${nivel.clase}"><span class="punto"></span> ${nivel.texto}</div>
+          <div class="ficha-bloque">
+            <h4><i class="fa-solid fa-car-side"></i> Vehículos compatibles</h4>
+            <div class="ficha-compat">${compatHTML}</div>
+          </div>
+          <div class="ficha-bloque">
+            <h4><i class="fa-solid fa-list-check"></i> Especificaciones técnicas</h4>
+            <table class="ficha-specs">${specsHTML}</table>
+          </div>
+          <div class="ficha-compra">
+            <div class="cantidad-sel">
+              <button onclick="Producto.cambiarCantidad(-1)">−</button>
+              <input type="text" id="fichaCantidad" value="1" readonly>
+              <button onclick="Producto.cambiarCantidad(1)">+</button>
+            </div>
+            <button class="btn-add-grande" id="fichaBtnAdd" ${p.stock<=0?'disabled':''}
+              onclick="Producto.agregarDesdeFicha(${p.id})">
+              <i class="fa-solid fa-cart-plus"></i> ${p.stock<=0?'Agotado':'Añadir al carrito'}
+            </button>
+          </div>
+        </div>
+      </div>
+      ${relacionados.length?`<div class="relacionados">
+        <h4><i class="fa-solid fa-layer-group" style="color:var(--rojo);margin-right:8px"></i>Productos relacionados</h4>
+        <div class="relacionados-grid">${relHTML}</div>
+      </div>`:''}`;
+    // Guarda el stock máximo para el selector de cantidad
+    Producto._stockActual = p.stock;
+    document.getElementById('modalProducto').classList.add('abierto');
+    document.getElementById('overlay').classList.add('abierto');
+  },
+  cambiarCantidad(delta){
+    const input = document.getElementById('fichaCantidad');
+    let v = parseInt(input.value) + delta;
+    const max = Math.min(10, Producto._stockActual||10);
+    if(v<1) v=1; if(v>max) v=max;
+    input.value = v;
+  },
+  agregarDesdeFicha(id){
+    const cant = parseInt(document.getElementById('fichaCantidad').value);
+    const btn = document.getElementById('fichaBtnAdd');
+    btn.classList.add('animando');
+    setTimeout(()=>btn.classList.remove('animando'),400);
+    Carrito.agregar(id, cant, null);
+  },
+  cerrar(){
+    document.getElementById('modalProducto').classList.remove('abierto');
+    if(!Carrito.estaAbierto()) document.getElementById('overlay').classList.remove('abierto');
+  },
+  estaAbierto(){ return document.getElementById('modalProducto').classList.contains('abierto'); }
+};
+
+/* =========================================================================
+   ============  CARRITO  ==================================================
+   ========================================================================= */
+const Carrito = {
+  IVA:0.16, ENVIO_BASE:8, GRATIS_DESDE:100,
+
+  // Añade un producto al carrito (con control de stock) y animación
+  agregar(id, cantidad=1, btnOrigen){
+    const p = Estado.producto(id);
+    if(!p) return;
+    if(p.stock<=0){ Toast.error('Producto agotado'); return; }
+    const item = Estado.carrito.find(i=>i.id===id);
+    const enCarrito = item ? item.cantidad : 0;
+    if(enCarrito + cantidad > p.stock){
+      Toast.error(`Stock insuficiente. Solo quedan ${p.stock} unidades.`); return;
+    }
+    if(item) item.cantidad += cantidad;
+    else Estado.carrito.push({id, cantidad});
+    Estado.guardarCarrito();
+    Carrito.actualizarContador();
+    Carrito.render();
+    // Animación de "item volando al carrito"
+    if(btnOrigen) Carrito.animarVuelo(btnOrigen, p);
+    Toast.exito(`${cantidad>1?cantidad+' × ':''}${p.nombre} añadido al carrito`);
+  },
+  // Anima una miniatura desde el botón hasta el icono del carrito
+  animarVuelo(btn, prod){
+    const rectBtn = btn.getBoundingClientRect();
+    const carritoIcono = document.getElementById('btnCarrito').getBoundingClientRect();
+    const fly = document.createElement('div');
+    fly.className='fly-img';
+    fly.style.left=rectBtn.left+'px'; fly.style.top=rectBtn.top+'px';
+    fly.style.width='48px'; fly.style.height='48px';
+    fly.innerHTML=Util.placeholder(prod);
+    document.body.appendChild(fly);
+    requestAnimationFrame(()=>{
+      fly.style.left=carritoIcono.left+'px'; fly.style.top=carritoIcono.top+'px';
+      fly.style.width='20px'; fly.style.height='20px'; fly.style.opacity='0.2';
+    });
+    setTimeout(()=>{
+      fly.remove();
+      const ci=document.getElementById('btnCarrito');
+      ci.animate([{transform:'scale(1)'},{transform:'scale(1.3)'},{transform:'scale(1)'}],{duration:300});
+    },820);
+  },
+  // Cambia la cantidad de un item (+/-)
+  cambiar(id, delta){
+    const item = Estado.carrito.find(i=>i.id===id);
+    if(!item) return;
+    const p = Estado.producto(id);
+    const nueva = item.cantidad + delta;
+    if(nueva<1){ Carrito.eliminar(id); return; }
+    if(nueva > p.stock){ Toast.error(`Solo quedan ${p.stock} unidades`); return; }
+    item.cantidad = nueva;
+    Estado.guardarCarrito();
+    Carrito.actualizarContador(); Carrito.render();
+  },
+  eliminar(id){
+    Estado.carrito = Estado.carrito.filter(i=>i.id!==id);
+    Estado.guardarCarrito();
+    Carrito.actualizarContador(); Carrito.render();
+    Toast.info('Producto eliminado del carrito');
+  },
+  vaciar(){
+    if(Estado.carrito.length===0) return;
+    Estado.carrito = [];
+    Estado.guardarCarrito();
+    Carrito.actualizarContador(); Carrito.render();
+    Toast.info('Carrito vaciado');
+  },
+  // Cálculos de totales
+  subtotal(){ return Estado.carrito.reduce((s,i)=>{ const p=Estado.producto(i.id); return s + (p?p.precio*i.cantidad:0); },0); },
+  iva(){ return Carrito.subtotal()*Carrito.IVA; },
+  envio(){ const sub=Carrito.subtotal(); if(sub===0||sub>=Carrito.GRATIS_DESDE) return 0; return Carrito.ENVIO_BASE; },
+  total(){ return Carrito.subtotal()+Carrito.iva()+Carrito.envio(); },
+  cantidadTotal(){ return Estado.carrito.reduce((s,i)=>s+i.cantidad,0); },
+
+  actualizarContador(){
+    const n = Carrito.cantidadTotal();
+    const c = document.getElementById('contadorCarrito');
+    c.textContent = n; c.setAttribute('data-n', n);
+  },
+  // Pinta el contenido del carrito
+  render(){
+    const cont = document.getElementById('carritoItems');
+    const pie = document.getElementById('carritoPie');
+    if(Estado.carrito.length===0){
+      cont.innerHTML = `<div class="carrito-vacio">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <h4>Tu carrito está vacío</h4>
+        <p>Añade repuestos para verlos aquí.</p></div>`;
+      pie.innerHTML = `<div class="carrito-botones">
+        <button class="btn-secundario" onclick="Carrito.cerrar()"><i class="fa-solid fa-arrow-left"></i> Seguir comprando</button>
+      </div>`;
+      Carrito.actualizarEnvioGratis();
+      return;
+    }
+    // Items
+    cont.innerHTML = Estado.carrito.map(i=>{
+      const p = Estado.producto(i.id);
+      if(!p) return '';
+      return `<div class="ci">
+        <div class="ci-img">${Util.placeholder(p)}</div>
+        <div class="ci-info">
+          <div class="ci-nom">${Util.esc(p.nombre)}</div>
+          <div class="ci-ref">Ref: ${p.ref} · ${p.marca}</div>
+          <div class="ci-precio-unit">${Util.precio(p.precio)} c/u</div>
+          <div class="ci-controles">
+            <div class="ci-cant">
+              <button onclick="Carrito.cambiar(${p.id},-1)">−</button>
+              <span>${i.cantidad}</span>
+              <button onclick="Carrito.cambiar(${p.id},1)">+</button>
+            </div>
+            <div class="ci-subtotal">${Util.precio(p.precio*i.cantidad)}</div>
+          </div>
+        </div>
+        <button class="ci-eliminar" onclick="Carrito.eliminar(${p.id})" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>
+      </div>`;
+    }).join('');
+    // Pie con totales
+    pie.innerHTML = `
+      <div class="carrito-totales">
+        <div class="total-linea"><span>Subtotal</span><span>${Util.precio(Carrito.subtotal())}</span></div>
+        <div class="total-linea"><span>IVA (16%)</span><span>${Util.precio(Carrito.iva())}</span></div>
+        <div class="total-linea"><span>Envío</span><span>${Carrito.envio()===0?'<b style="color:var(--verde)">GRATIS</b>':Util.precio(Carrito.envio())}</span></div>
+        <div class="total-linea grande"><span>Total</span><span>${Util.precio(Carrito.total())}</span></div>
+      </div>
+      <div class="carrito-botones">
+        <button class="btn-primario" onclick="Checkout.abrir()"><i class="fa-solid fa-lock"></i> Finalizar compra</button>
+        <button class="btn-secundario" onclick="Carrito.cerrar()"><i class="fa-solid fa-arrow-left"></i> Seguir comprando</button>
+      </div>
+      <div class="carrito-links">
+        <button onclick="Carrito.vaciar()"><i class="fa-solid fa-trash-can"></i> Vaciar carrito</button>
+        <button onclick="Carrito.cerrar()">Cerrar</button>
+      </div>`;
+    Carrito.actualizarEnvioGratis();
+  },
+  // Barra de progreso hacia el envío gratis
+  actualizarEnvioGratis(){
+    const sub = Carrito.subtotal();
+    const box = document.getElementById('envioGratisBox');
+    const txt = document.getElementById('envioGratisTxt');
+    const fill = document.getElementById('envioBarraFill');
+    if(sub===0){ box.style.display='none'; return; }
+    box.style.display='block';
+    if(sub>=Carrito.GRATIS_DESDE){
+      txt.innerHTML = `<i class="fa-solid fa-circle-check" style="color:var(--verde)"></i> ¡Genial! Tienes <b>envío GRATIS</b>`;
+      fill.style.width='100%';
+    } else {
+      const falta = Carrito.GRATIS_DESDE - sub;
+      txt.innerHTML = `<i class="fa-solid fa-truck-fast"></i> Te faltan <b>${Util.precio(falta)}</b> para el envío gratis`;
+      fill.style.width = (sub/Carrito.GRATIS_DESDE*100)+'%';
+    }
+  },
+  abrir(){
+    Carrito.render();
+    document.getElementById('carritoPanel').classList.add('abierto');
+    document.getElementById('overlay').classList.add('abierto');
+  },
+  cerrar(){
+    document.getElementById('carritoPanel').classList.remove('abierto');
+    if(!Producto.estaAbierto() && !Checkout.estaAbierto())
+      document.getElementById('overlay').classList.remove('abierto');
+  },
+  estaAbierto(){ return document.getElementById('carritoPanel').classList.contains('abierto'); }
+};
+
+/* =========================================================================
+   ============  CHECKOUT (3 pasos)  =======================================
+   ========================================================================= */
+const Checkout = {
+  paso:1,
+  datos:{ // se rellena al avanzar por los pasos
+    nombre:'',telefono:'',email:'',tipoDoc:'V',cedula:'',
+    estado:'',ciudad:'',sector:'',direccion:'',referencia:'',codigoPostal:'',retiro:false,
+    pago:'', terminos:false
+  },
+
+  abrir(){
+    if(Estado.carrito.length===0){ Toast.error('Tu carrito está vacío'); return; }
+    Checkout.paso=1;
+    Carrito.cerrar();
+    Checkout.render();
+    document.getElementById('modalCheckout').classList.add('abierto');
+    document.getElementById('overlay').classList.add('abierto');
+  },
+  // Dibuja la estructura de pasos + el panel actual
+  render(){
+    const cont = document.getElementById('modalCheckoutContenido');
+    cont.innerHTML = `
+      <div class="checkout-head">
+        <h3><i class="fa-solid fa-bag-shopping" style="color:var(--rojo)"></i> Finalizar compra</h3>
+        <div class="pasos">
+          <div class="paso ${Checkout.paso>=1?'activo':''} ${Checkout.paso>1?'completado':''}">
+            <div class="paso-num">${Checkout.paso>1?'<i class="fa-solid fa-check"></i>':'1'}</div>
+            <div class="paso-txt">Datos personales</div>
+          </div>
+          <div class="paso ${Checkout.paso>=2?'activo':''} ${Checkout.paso>2?'completado':''}">
+            <div class="paso-num">${Checkout.paso>2?'<i class="fa-solid fa-check"></i>':'2'}</div>
+            <div class="paso-txt">Envío</div>
+          </div>
+          <div class="paso ${Checkout.paso>=3?'activo':''}">
+            <div class="paso-num">3</div>
+            <div class="paso-txt">Pago</div>
+          </div>
+        </div>
+      </div>
+      <div class="checkout-cuerpo">
+        ${Checkout.paso===1?Checkout.paso1():''}
+        ${Checkout.paso===2?Checkout.paso2():''}
+        ${Checkout.paso===3?Checkout.paso3():''}
+      </div>
+      <div class="checkout-nav">
+        ${Checkout.paso>1?`<button class="btn-atras" onclick="Checkout.anterior()"><i class="fa-solid fa-arrow-left"></i> Atrás</button>`:'<span></span>'}
+        ${Checkout.paso<3
+          ? `<button class="btn-siguiente" onclick="Checkout.siguiente()">Continuar <i class="fa-solid fa-arrow-right"></i></button>`
+          : `<button class="btn-siguiente" onclick="Checkout.confirmar()"><i class="fa-solid fa-circle-check"></i> CONFIRMAR PEDIDO</button>`}
+      </div>`;
+    // Restaura valores y re-vincula validación en vivo
+    if(Checkout.paso===1) Checkout.vincularValidacionPaso1();
+    if(Checkout.paso===2) Checkout.vincularPaso2();
+  },
+  // ---------- PASO 1: datos personales ----------
+  paso1(){
+    const d=Checkout.datos;
+    return `<div class="paso-panel activo">
+      <div class="form-grid">
+        <div class="campo completo">
+          <label>Nombre completo <span class="req">*</span></label>
+          <input type="text" id="ckNombre" value="${Util.esc(d.nombre)}" placeholder="Ej: Juan Pérez">
+          <span class="msg-error" id="errNombre">Ingresa tu nombre completo</span>
+        </div>
+        <div class="campo">
+          <label>Teléfono <span class="req">*</span></label>
+          <input type="tel" id="ckTelefono" value="${Util.esc(d.telefono)}" placeholder="0412-1234567">
+          <span class="msg-error" id="errTelefono">Teléfono no válido (ej: 0412-1234567)</span>
+        </div>
+        <div class="campo">
+          <label>Email <span class="req">*</span></label>
+          <input type="email" id="ckEmail" value="${Util.esc(d.email)}" placeholder="tucorreo@email.com">
+          <span class="msg-error" id="errEmail">Email no válido</span>
+        </div>
+        <div class="campo">
+          <label>Tipo de documento <span class="req">*</span></label>
+          <select id="ckTipoDoc">
+            <option value="V" ${d.tipoDoc==='V'?'selected':''}>V - Venezolano</option>
+            <option value="J" ${d.tipoDoc==='J'?'selected':''}>J - Jurídico</option>
+            <option value="E" ${d.tipoDoc==='E'?'selected':''}>E - Extranjero</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label>Cédula / RIF <span class="req">*</span></label>
+          <input type="text" id="ckCedula" value="${Util.esc(d.cedula)}" placeholder="12345678">
+          <span class="msg-error" id="errCedula">Ingresa un número válido (7-9 dígitos)</span>
+        </div>
+      </div>
+    </div>`;
+  },
+  // Validación en vivo del paso 1
+  vincularValidacionPaso1(){
+    const campos=[
+      {id:'ckNombre', err:'errNombre', val:v=>v.trim().length>=3},
+      {id:'ckTelefono', err:'errTelefono', val:v=>/^[0-9\-\+\s()]{7,15}$/.test(v.trim())},
+      {id:'ckEmail', err:'errEmail', val:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim())},
+      {id:'ckCedula', err:'errCedula', val:v=>/^[0-9]{7,9}$/.test(v.trim())}
+    ];
+    campos.forEach(c=>{
+      const inp=document.getElementById(c.id);
+      inp.addEventListener('input',()=>{
+        const ok=c.val(inp.value);
+        inp.classList.toggle('error', inp.value.length>0 && !ok);
+        inp.classList.toggle('valido', ok);
+        document.getElementById(c.err).classList.toggle('visible', inp.value.length>0 && !ok);
+      });
+    });
+  },
+  validarPaso1(){
+    const d=Checkout.datos;
+    d.nombre=document.getElementById('ckNombre').value.trim();
+    d.telefono=document.getElementById('ckTelefono').value.trim();
+    d.email=document.getElementById('ckEmail').value.trim();
+    d.tipoDoc=document.getElementById('ckTipoDoc').value;
+    d.cedula=document.getElementById('ckCedula').value.trim();
+    const okNombre=d.nombre.length>=3;
+    const okTel=/^[0-9\-\+\s()]{7,15}$/.test(d.telefono);
+    const okEmail=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email);
+    const okCed=/^[0-9]{7,9}$/.test(d.cedula);
+    // Marca errores
+    [['ckNombre','errNombre',okNombre],['ckTelefono','errTelefono',okTel],
+     ['ckEmail','errEmail',okEmail],['ckCedula','errCedula',okCed]].forEach(([id,err,ok])=>{
+      document.getElementById(id).classList.toggle('error',!ok);
+      document.getElementById(err).classList.toggle('visible',!ok);
+    });
+    if(!(okNombre&&okTel&&okEmail&&okCed)){ Toast.error('Complete todos los campos correctamente'); return false; }
+    return true;
+  },
+  // ---------- PASO 2: dirección de envío ----------
+  paso2(){
+    const d=Checkout.datos;
+    const opcionesEstado=ESTADOS_VE.map(e=>`<option value="${e}" ${d.estado===e?'selected':''}>${e}</option>`).join('');
+    return `<div class="paso-panel activo">
+      <label class="check-fila" style="margin-bottom:16px">
+        <input type="checkbox" id="ckRetiro" ${d.retiro?'checked':''} onchange="Checkout.toggleRetiro(this.checked)">
+        <div><b>Retiro en tienda</b><br><span style="font-size:.8rem;color:var(--texto-suave)">Recoge tu pedido en nuestra sede de Guaicaipuro (Estado Miranda) sin costo de envío.</span></div>
+      </label>
+      <div class="form-grid" id="camposEnvio">
+        <div class="campo">
+          <label>Estado <span class="req">*</span></label>
+          <select id="ckEstado"><option value="">Selecciona estado...</option>${opcionesEstado}</select>
+          <span class="msg-error" id="errEstado">Selecciona un estado</span>
+        </div>
+        <div class="campo">
+          <label>Ciudad <span class="req">*</span></label>
+          <input type="text" id="ckCiudad" value="${Util.esc(d.ciudad)}" placeholder="Ej: Los Teques">
+          <span class="msg-error" id="errCiudad">Ingresa la ciudad</span>
+        </div>
+        <div class="campo">
+          <label>Sector / Urbanización</label>
+          <input type="text" id="ckSector" value="${Util.esc(d.sector)}" placeholder="Ej: Urb. El Trigal">
+        </div>
+        <div class="campo">
+          <label>Código postal</label>
+          <input type="text" id="ckCP" value="${Util.esc(d.codigoPostal)}" placeholder="1201">
+        </div>
+        <div class="campo completo">
+          <label>Dirección exacta <span class="req">*</span></label>
+          <input type="text" id="ckDireccion" value="${Util.esc(d.direccion)}" placeholder="Calle, avenida, casa/edificio, número...">
+          <span class="msg-error" id="errDireccion">Ingresa la dirección exacta</span>
+        </div>
+        <div class="campo completo">
+          <label>Punto de referencia</label>
+          <input type="text" id="ckReferencia" value="${Util.esc(d.referencia)}" placeholder="Ej: frente a la plaza, al lado del banco...">
+        </div>
+      </div>
+    </div>`;
+  },
+  vincularPaso2(){
+    // Si venía marcado el retiro en tienda, aplica el estado visual
+    if(Checkout.datos.retiro) Checkout.toggleRetiro(true);
+  },
+  // Retiro en tienda: precarga la dirección de Guaicaipuro y deshabilita campos
+  toggleRetiro(on){
+    Checkout.datos.retiro=on;
+    const campos=document.getElementById('camposEnvio');
+    const inputs=campos.querySelectorAll('input,select');
+    if(on){
+      document.getElementById('ckEstado').value='Miranda';
+      document.getElementById('ckCiudad').value='Municipio Guaicaipuro';
+      document.getElementById('ckSector').value='Sector Guaicaipuro';
+      document.getElementById('ckDireccion').value='Calle Principal, Sector Guaicaipuro (retiro en tienda)';
+      document.getElementById('ckReferencia').value='Sede Repuestos Guaicaipuro';
+      document.getElementById('ckCP').value='1201';
+      inputs.forEach(i=>{i.setAttribute('disabled','disabled');i.style.opacity='0.6';});
+    } else {
+      inputs.forEach(i=>{i.removeAttribute('disabled');i.style.opacity='1';});
+    }
+  },
+  validarPaso2(){
+    const d=Checkout.datos;
+    d.retiro=document.getElementById('ckRetiro').checked;
+    d.estado=document.getElementById('ckEstado').value;
+    d.ciudad=document.getElementById('ckCiudad').value.trim();
+    d.sector=document.getElementById('ckSector').value.trim();
+    d.direccion=document.getElementById('ckDireccion').value.trim();
+    d.referencia=document.getElementById('ckReferencia').value.trim();
+    d.codigoPostal=document.getElementById('ckCP').value.trim();
+    if(d.retiro) return true; // retiro en tienda no requiere validación de envío
+    const okEstado=!!d.estado, okCiudad=d.ciudad.length>=2, okDir=d.direccion.length>=5;
+    [['ckEstado','errEstado',okEstado],['ckCiudad','errCiudad',okCiudad],
+     ['ckDireccion','errDireccion',okDir]].forEach(([id,err,ok])=>{
+      document.getElementById(id).classList.toggle('error',!ok);
+      document.getElementById(err).classList.toggle('visible',!ok);
+    });
+    if(!(okEstado&&okCiudad&&okDir)){ Toast.error('Complete los datos de envío'); return false; }
+    return true;
+  },
+  // ---------- PASO 3: resumen y pago ----------
+  paso3(){
+    const d=Checkout.datos;
+    // Resumen de items
+    const itemsHTML=Estado.carrito.map(i=>{
+      const p=Estado.producto(i.id);
+      return `<div class="resumen-item">
+        <span class="ri-nom">${Util.esc(p.nombre)} <span class="ri-cant">× ${i.cantidad}</span></span>
+        <span>${Util.precio(p.precio*i.cantidad)}</span></div>`;
+    }).join('');
+    const envio=Checkout.datos.retiro?0:Carrito.envio();
+    const total=Carrito.subtotal()+Carrito.iva()+envio;
+    return `<div class="paso-panel activo">
+      <div class="ficha-bloque">
+        <h4><i class="fa-solid fa-receipt"></i> Resumen del pedido</h4>
+        <div class="resumen-items">${itemsHTML}</div>
+        <div class="resumen-totales">
+          <div class="total-linea"><span>Subtotal</span><span>${Util.precio(Carrito.subtotal())}</span></div>
+          <div class="total-linea"><span>IVA (16%)</span><span>${Util.precio(Carrito.iva())}</span></div>
+          <div class="total-linea"><span>Envío${Checkout.datos.retiro?' (retiro en tienda)':''}</span><span>${envio===0?'<b style="color:var(--verde)">GRATIS</b>':Util.precio(envio)}</span></div>
+          <div class="total-linea grande"><span>Total a pagar</span><span>${Util.precio(total)}</span></div>
+        </div>
+      </div>
+      <div class="ficha-bloque">
+        <h4><i class="fa-solid fa-credit-card"></i> Método de pago</h4>
+        <div class="pago-metodos">
+          <label class="pago-metodo ${d.pago==='movil'?'sel':''}">
+            <input type="radio" name="pago" value="movil" ${d.pago==='movil'?'checked':''} onchange="Checkout.elegirPago('movil')">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+            <div class="pm-info"><strong>Pago móvil</strong><span>Paga desde tu banco al instante</span></div>
+          </label>
+          <label class="pago-metodo ${d.pago==='transferencia'?'sel':''}">
+            <input type="radio" name="pago" value="transferencia" ${d.pago==='transferencia'?'checked':''} onchange="Checkout.elegirPago('transferencia')">
+            <i class="fa-solid fa-building-columns"></i>
+            <div class="pm-info"><strong>Transferencia bancaria</strong><span>Transfiere a nuestra cuenta</span></div>
+          </label>
+          <label class="pago-metodo ${d.pago==='efectivo'?'sel':''}">
+            <input type="radio" name="pago" value="efectivo" ${d.pago==='efectivo'?'checked':''} onchange="Checkout.elegirPago('efectivo')">
+            <i class="fa-solid fa-money-bill-wave"></i>
+            <div class="pm-info"><strong>Efectivo contra entrega</strong><span>Paga al recibir tu pedido</span></div>
+          </label>
+        </div>
+        <!-- Datos bancarios (se muestran para pago móvil/transferencia) -->
+        <div class="datos-banco ${(d.pago==='movil'||d.pago==='transferencia')?'visible':''}" id="datosBanco">
+          <h5><i class="fa-solid fa-building-columns"></i> Datos para el pago</h5>
+          <div class="db-linea"><span>Banco</span><b>Banco de Venezuela</b></div>
+          <div class="db-linea"><span>Cuenta</span><b>0102-0000-0000-0000</b></div>
+          <div class="db-linea"><span>Titular</span><b>Repuestos Guaicaipuro</b></div>
+          <div class="db-linea"><span>RIF</span><b>J-12345678-9</b></div>
+          <div class="db-linea"><span>Teléfono (pago móvil)</span><b>0412-1234567</b></div>
+        </div>
+      </div>
+      <label class="check-fila">
+        <input type="checkbox" id="ckTerminos" ${d.terminos?'checked':''}>
+        <div>Acepto los <b>términos y condiciones</b> y la política de privacidad de Repuestos Guaicaipuro.</div>
+      </label>
+    </div>`;
+  },
+  elegirPago(metodo){
+    Checkout.datos.pago=metodo;
+    // Muestra/oculta datos bancarios y resalta la tarjeta elegida
+    document.querySelectorAll('.pago-metodo').forEach(el=>{
+      el.classList.toggle('sel', el.querySelector('input').value===metodo);
+    });
+    const banco=document.getElementById('datosBanco');
+    banco.classList.toggle('visible', metodo==='movil'||metodo==='transferencia');
+  },
+  // Navegación entre pasos
+  siguiente(){
+    if(Checkout.paso===1 && !Checkout.validarPaso1()) return;
+    if(Checkout.paso===2 && !Checkout.validarPaso2()) return;
+    Checkout.paso++;
+    Checkout.render();
+  },
+  anterior(){ Checkout.paso--; Checkout.render(); },
+  // Confirmación final del pedido
+  confirmar(){
+    const d=Checkout.datos;
+    d.pago=(document.querySelector('input[name="pago"]:checked')||{}).value||'';
+    d.terminos=document.getElementById('ckTerminos').checked;
+    if(!d.pago){ Toast.error('Selecciona un método de pago'); return; }
+    if(!d.terminos){ Toast.error('Debes aceptar los términos y condiciones'); return; }
+    // Verifica stock una última vez y descuenta
+    for(const i of Estado.carrito){
+      const p=Estado.producto(i.id);
+      if(!p || p.cantidad>p.stock && i.cantidad>p.stock){ Toast.error(`Sin stock suficiente de ${p?p.nombre:''}`); return; }
+    }
+    // Genera número de pedido #GC-2024-XXXX
+    const num='GC-2024-'+String(Math.floor(1000+Math.random()*9000));
+    const envio=d.retiro?0:Carrito.envio();
+    const pedido={
+      numero:num,
+      fecha:new Date().toISOString(),
+      cliente:{nombre:d.nombre,telefono:d.telefono,email:d.email,doc:d.tipoDoc+'-'+d.cedula},
+      envio:{retiro:d.retiro,estado:d.estado,ciudad:d.ciudad,sector:d.sector,direccion:d.direccion,referencia:d.referencia,cp:d.codigoPostal},
+      pago:d.pago,
+      items:Estado.carrito.map(i=>{const p=Estado.producto(i.id);return {id:p.id,nombre:p.nombre,ref:p.ref,precio:p.precio,cantidad:i.cantidad};}),
+      subtotal:Carrito.subtotal(), iva:Carrito.iva(), envioCosto:envio, total:Carrito.subtotal()+Carrito.iva()+envio,
+      estado_pedido:'pendiente'
+    };
+    // Descuenta stock
+    Estado.carrito.forEach(i=>{ const p=Estado.producto(i.id); if(p) p.stock=Math.max(0,p.stock-i.cantidad); });
+    Estado.guardarProductos();
+    // Guarda el pedido
+    Estado.pedidos.push(pedido);
+    Estado.guardarPedidos();
+    // Vacía el carrito
+    Estado.carrito=[]; Estado.guardarCarrito(); Carrito.actualizarContador();
+    // Repinta catálogo/ofertas (stock actualizado)
+    Catalogo.initFiltros(); Catalogo.render(); Ofertas.render();
+    // Pantalla de confirmación
+    Checkout.mostrarConfirmacion(pedido);
+    Toast.exito('¡Pedido confirmado! '+num);
+  },
+  mostrarConfirmacion(pedido){
+    // Mensaje de WhatsApp con el resumen del pedido
+    const lineas=pedido.items.map(it=>`• ${it.nombre} (x${it.cantidad}) — ${Util.precio(it.precio*it.cantidad)}`).join('%0A');
+    const metodoTxt={movil:'Pago móvil',transferencia:'Transferencia bancaria',efectivo:'Efectivo contra entrega'}[pedido.pago];
+    const msg=`*Nuevo pedido ${pedido.numero}*%0A%0A`+
+      `*Cliente:* ${pedido.cliente.nombre}%0A`+
+      `*Documento:* ${pedido.cliente.doc}%0A`+
+      `*Teléfono:* ${pedido.cliente.telefono}%0A%0A`+
+      `*Productos:*%0A${lineas}%0A%0A`+
+      `*Subtotal:* ${Util.precio(pedido.subtotal)}%0A`+
+      `*IVA:* ${Util.precio(pedido.iva)}%0A`+
+      `*Envío:* ${pedido.envioCosto===0?'GRATIS':Util.precio(pedido.envioCosto)}%0A`+
+      `*TOTAL:* ${Util.precio(pedido.total)}%0A%0A`+
+      `*Pago:* ${metodoTxt}%0A`+
+      `*Entrega:* ${pedido.envio.retiro?'Retiro en tienda':pedido.envio.direccion+', '+pedido.envio.ciudad+', '+pedido.envio.estado}`;
+    const url='https://wa.me/584121234567?text='+msg;
+    document.getElementById('modalCheckoutContenido').innerHTML=`
+      <div class="confirmacion">
+        <div class="confirmacion-icono"><i class="fa-solid fa-check"></i></div>
+        <h3>¡Pedido confirmado!</h3>
+        <p>Gracias por tu compra, <b>${Util.esc(pedido.cliente.nombre.split(' ')[0])}</b>. Hemos recibido tu pedido.</p>
+        <div class="pedido-num">#${pedido.numero}</div>
+        <p>Te contactaremos al <b>${Util.esc(pedido.cliente.telefono)}</b> para coordinar ${pedido.envio.retiro?'el retiro en tienda':'el envío'}.</p>
+        <p style="margin-top:10px">Total: <b style="color:var(--rojo);font-size:1.2rem">${Util.precio(pedido.total)}</b></p>
+        <div class="confirmacion-botones">
+          <a class="btn-whatsapp-ped" href="${url}" target="_blank"><i class="fa-brands fa-whatsapp"></i> Enviar resumen por WhatsApp</a>
+          <button class="btn-secundario" onclick="Checkout.cerrar()" style="padding:13px 24px"><i class="fa-solid fa-house"></i> Volver a la tienda</button>
+        </div>
+      </div>`;
+    // Reinicia los datos para el próximo pedido
+    Checkout.datos={nombre:'',telefono:'',email:'',tipoDoc:'V',cedula:'',estado:'',ciudad:'',sector:'',
+      direccion:'',referencia:'',codigoPostal:'',retiro:false,pago:'',terminos:false};
+  },
+  cerrar(){
+    document.getElementById('modalCheckout').classList.remove('abierto');
+    if(!Carrito.estaAbierto()) document.getElementById('overlay').classList.remove('abierto');
+  },
+  estaAbierto(){ return document.getElementById('modalCheckout').classList.contains('abierto'); }
+};
+
+/* =========================================================================
+   ============  PANEL DE ADMINISTRACIÓN  ==================================
+   ========================================================================= */
+const Admin = {
+  PASS:'Guaica2024', autenticado:false, tab:'dashboard', editandoId:null,
+
+  abrir(){
+    document.getElementById('modalAdmin').classList.add('abierto');
+    document.getElementById('overlay').classList.add('abierto');
+    if(Admin.autenticado) Admin.render();
+    else Admin.renderLogin();
+  },
+  renderLogin(){
+    document.getElementById('modalAdminContenido').innerHTML=`
+      <div class="admin-login">
+        <i class="fa-solid fa-lock candado"></i>
+        <h3>Panel de administración</h3>
+        <p>Introduce la contraseña para acceder</p>
+        <input type="password" id="adminPass" placeholder="Contraseña"
+          onkeydown="if(event.key==='Enter')Admin.login()">
+        <button class="btn-primario" onclick="Admin.login()"><i class="fa-solid fa-right-to-bracket"></i> Acceder</button>
+      </div>`;
+    setTimeout(()=>document.getElementById('adminPass').focus(),100);
+  },
+  login(){
+    const val=document.getElementById('adminPass').value;
+    if(val===Admin.PASS){ Admin.autenticado=true; Toast.exito('Bienvenido al panel de administración'); Admin.render(); }
+    else Toast.error('Contraseña incorrecta');
+  },
+  cambiarTab(t){ Admin.tab=t; Admin.editandoId=null; Admin.render(); },
+
+  render(){
+    const cont=document.getElementById('modalAdminContenido');
+    cont.innerHTML=`
+      <div class="admin-head">
+        <h3><i class="fa-solid fa-user-shield"></i> Administración — Repuestos Guaicaipuro</h3>
+      </div>
+      <div class="admin-tabs">
+        <button class="admin-tab ${Admin.tab==='dashboard'?'activo':''}" onclick="Admin.cambiarTab('dashboard')"><i class="fa-solid fa-chart-line"></i> Dashboard</button>
+        <button class="admin-tab ${Admin.tab==='pedidos'?'activo':''}" onclick="Admin.cambiarTab('pedidos')"><i class="fa-solid fa-box"></i> Pedidos</button>
+        <button class="admin-tab ${Admin.tab==='productos'?'activo':''}" onclick="Admin.cambiarTab('productos')"><i class="fa-solid fa-boxes-stacked"></i> Productos</button>
+      </div>
+      <div class="admin-panel activo">
+        ${Admin.tab==='dashboard'?Admin.dashboard():''}
+        ${Admin.tab==='pedidos'?Admin.pedidos():''}
+        ${Admin.tab==='productos'?Admin.productos():''}
+      </div>`;
+  },
+  // ---------- Dashboard ----------
+  dashboard(){
+    const totalProd=Estado.productos.length;
+    const totalPed=Estado.pedidos.length;
+    // Ingresos del mes actual
+    const ahora=new Date();
+    const ingresosMes=Estado.pedidos
+      .filter(p=>{const f=new Date(p.fecha);return f.getMonth()===ahora.getMonth()&&f.getFullYear()===ahora.getFullYear();})
+      .reduce((s,p)=>s+p.total,0);
+    const stockBajo=Estado.productos.filter(p=>p.stock<5);
+    return `
+      <div class="dash-grid">
+        <div class="dash-card"><i class="fa-solid fa-boxes-stacked dc-icono"></i>
+          <div class="dc-valor">${totalProd}</div><div class="dc-label">Productos en catálogo</div></div>
+        <div class="dash-card"><i class="fa-solid fa-receipt dc-icono"></i>
+          <div class="dc-valor">${totalPed}</div><div class="dc-label">Pedidos totales</div></div>
+        <div class="dash-card"><i class="fa-solid fa-dollar-sign dc-icono"></i>
+          <div class="dc-valor">${Util.precio(ingresosMes)}</div><div class="dc-label">Ingresos del mes</div></div>
+        <div class="dash-card ${stockBajo.length?'alerta':''}"><i class="fa-solid fa-triangle-exclamation dc-icono"></i>
+          <div class="dc-valor">${stockBajo.length}</div><div class="dc-label">Productos con stock bajo</div></div>
+      </div>
+      ${stockBajo.length?`<div class="alerta-stock">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <div>
+          <h5>Atención: ${stockBajo.length} producto(s) con stock bajo (menos de 5 unidades)</h5>
+          <span style="font-size:.85rem;color:var(--texto-suave)">Reabastece estos productos pronto:</span>
+          <div class="chips-bajo">
+            ${stockBajo.map(p=>`<span class="chip-bajo">${Util.esc(p.nombre)} <b style="color:var(--rojo)">(${p.stock})</b></span>`).join('')}
+          </div>
+        </div>
+      </div>`:'<p style="color:var(--verde);font-weight:600"><i class="fa-solid fa-circle-check"></i> Todo el stock en niveles saludables.</p>'}
+      <div style="margin-top:22px">
+        <h4 style="font-family:var(--fuente-titulo);margin-bottom:12px"><i class="fa-solid fa-fire" style="color:var(--rojo)"></i> Productos más vendidos</h4>
+        <div class="tabla-envoltura">
+          <table class="tabla">
+            <thead><tr><th>Producto</th><th>Referencia</th><th>Precio</th><th>Vendidos</th><th>Stock</th></tr></thead>
+            <tbody>
+              ${Estado.productos.slice().sort((a,b)=>b.vendidos-a.vendidos).slice(0,5).map(p=>`
+                <tr><td>${Util.esc(p.nombre)}</td><td>${p.ref}</td><td>${Util.precio(p.precio)}</td>
+                <td><b>${p.vendidos}</b></td><td>${p.stock}</td></tr>`).join('')}
+            </tbody>
+          </table>
+        </div>
+      </div>`;
+  },
+  // ---------- Pedidos ----------
+  pedidos(){
+    if(Estado.pedidos.length===0)
+      return `<p style="text-align:center;padding:40px;color:var(--texto-suave)"><i class="fa-solid fa-inbox" style="font-size:2rem;display:block;margin-bottom:10px"></i>Aún no hay pedidos registrados.</p>`;
+    return `<div class="tabla-envoltura">
+      <table class="tabla">
+        <thead><tr><th>Pedido</th><th>Cliente</th><th>Fecha</th><th>Total</th><th>Estado</th></tr></thead>
+        <tbody>
+          ${Estado.pedidos.slice().reverse().map(p=>{
+            const f=new Date(p.fecha).toLocaleDateString('es-VE',{day:'2-digit',month:'2-digit',year:'numeric'});
+            return `<tr>
+              <td><b>#${p.numero}</b></td>
+              <td>${Util.esc(p.cliente.nombre)}<br><span style="font-size:.76rem;color:var(--texto-suave)">${Util.esc(p.cliente.telefono)}</span></td>
+              <td>${f}</td>
+              <td><b>${Util.precio(p.total)}</b></td>
+              <td>
+                <select class="estado-select" onchange="Admin.cambiarEstadoPedido('${p.numero}',this.value)">
+                  <option value="pendiente" ${p.estado_pedido==='pendiente'?'selected':''}>Pendiente</option>
+                  <option value="enviado" ${p.estado_pedido==='enviado'?'selected':''}>Enviado</option>
+                  <option value="entregado" ${p.estado_pedido==='entregado'?'selected':''}>Entregado</option>
+                </select>
+              </td>
+            </tr>`;
+          }).join('')}
+        </tbody>
+      </table>
+    </div>`;
+  },
+  cambiarEstadoPedido(num, estado){
+    const p=Estado.pedidos.find(x=>x.numero===num);
+    if(p){ p.estado_pedido=estado; Estado.guardarPedidos(); Toast.exito(`Pedido #${num} → ${estado}`); }
+  },
+  // ---------- Productos (CRUD) ----------
+  productos(){
+    // Si se está editando/creando, muestra el formulario
+    if(Admin.editandoId!==null) return Admin.formProducto();
+    return `
+      <div class="admin-toolbar">
+        <span style="font-weight:600;color:var(--texto-suave)">${Estado.productos.length} productos en el catálogo</span>
+        <button class="btn-nuevo" onclick="Admin.nuevoProducto()"><i class="fa-solid fa-plus"></i> Añadir producto</button>
+      </div>
+      <div class="tabla-envoltura">
+        <table class="tabla">
+          <thead><tr><th>Producto</th><th>Ref.</th><th>Categoría</th><th>Precio</th><th>Stock</th><th>Acciones</th></tr></thead>
+          <tbody>
+            ${Estado.productos.map(p=>`
+              <tr class="${p.stock<5?'fila-bajo':''}">
+                <td>${Util.esc(p.nombre)}</td>
+                <td>${p.ref}</td>
+                <td>${Util.categoria(p.categoria).nombre}</td>
+                <td>${Util.precio(p.precio)}</td>
+                <td>${p.stock<5?`<b style="color:var(--rojo)">${p.stock}</b>`:p.stock}</td>
+                <td><div class="admin-acciones">
+                  <button class="mini-btn editar" onclick="Admin.editarProducto(${p.id})" title="Editar"><i class="fa-solid fa-pen"></i></button>
+                  <button class="mini-btn borrar" onclick="Admin.borrarProducto(${p.id})" title="Eliminar"><i class="fa-solid fa-trash"></i></button>
+                </div></td>
+              </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>`;
+  },
+  nuevoProducto(){ Admin.editandoId=0; Admin.render(); },
+  editarProducto(id){ Admin.editandoId=id; Admin.render(); },
+  // Formulario de alta/edición
+  formProducto(){
+    const esNuevo=Admin.editandoId===0;
+    const p=esNuevo
+      ? {nombre:'',ref:'',categoria:'frenos',marca:'Bosch',precio:'',precioAntes:'',stock:'',vendidos:0,compat:[],specs:{},destacado:false}
+      : Estado.producto(Admin.editandoId);
+    const optCat=CATEGORIAS.map(c=>`<option value="${c.id}" ${p.categoria===c.id?'selected':''}>${c.nombre}</option>`).join('');
+    const optMarca=MARCAS_REPUESTO.map(m=>`<option value="${m}" ${p.marca===m?'selected':''}>${m}</option>`).join('');
+    return `
+      <div class="admin-toolbar">
+        <h4 style="font-family:var(--fuente-titulo)">${esNuevo?'Añadir nuevo producto':'Editar producto'}</h4>
+        <button class="btn-secundario" onclick="Admin.cancelarForm()" style="padding:8px 16px"><i class="fa-solid fa-arrow-left"></i> Volver a la lista</button>
+      </div>
+      <div class="form-grid">
+        <div class="campo completo"><label>Nombre <span class="req">*</span></label>
+          <input type="text" id="pfNombre" value="${Util.esc(p.nombre)}"></div>
+        <div class="campo"><label>Referencia <span class="req">*</span></label>
+          <input type="text" id="pfRef" value="${Util.esc(p.ref)}" placeholder="Ej: FR-2024"></div>
+        <div class="campo"><label>Categoría</label><select id="pfCategoria">${optCat}</select></div>
+        <div class="campo"><label>Marca del repuesto</label><select id="pfMarca">${optMarca}</select></div>
+        <div class="campo"><label>Precio ($) <span class="req">*</span></label>
+          <input type="number" id="pfPrecio" value="${p.precio}" min="0" step="0.01"></div>
+        <div class="campo"><label>Precio anterior ($, opcional)</label>
+          <input type="number" id="pfPrecioAntes" value="${p.precioAntes||''}" min="0" step="0.01"></div>
+        <div class="campo"><label>Stock <span class="req">*</span></label>
+          <input type="number" id="pfStock" value="${p.stock}" min="0"></div>
+        <div class="campo"><label>Unidades vendidas</label>
+          <input type="number" id="pfVendidos" value="${p.vendidos||0}" min="0"></div>
+        <label class="check-fila"><input type="checkbox" id="pfDestacado" ${p.destacado?'checked':''}>
+          <div>Marcar como <b>oferta del mes</b> (aparece en la sección destacada)</div></label>
+      </div>
+      <div style="margin-top:18px;display:flex;gap:12px;justify-content:flex-end">
+        <button class="btn-secundario" onclick="Admin.cancelarForm()" style="padding:12px 22px">Cancelar</button>
+        <button class="btn-primario" onclick="Admin.guardarProducto()" style="padding:12px 26px"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+      </div>`;
+  },
+  cancelarForm(){ Admin.editandoId=null; Admin.render(); },
+  guardarProducto(){
+    const nombre=document.getElementById('pfNombre').value.trim();
+    const ref=document.getElementById('pfRef').value.trim();
+    const precio=parseFloat(document.getElementById('pfPrecio').value);
+    const stock=parseInt(document.getElementById('pfStock').value);
+    if(!nombre||!ref||isNaN(precio)||isNaN(stock)){ Toast.error('Completa nombre, referencia, precio y stock'); return; }
+    const datos={
+      nombre, ref, categoria:document.getElementById('pfCategoria').value,
+      marca:document.getElementById('pfMarca').value, precio,
+      precioAntes:parseFloat(document.getElementById('pfPrecioAntes').value)||null,
+      stock, vendidos:parseInt(document.getElementById('pfVendidos').value)||0,
+      destacado:document.getElementById('pfDestacado').checked
+    };
+    if(Admin.editandoId===0){
+      // Nuevo: asigna id, compatibilidad y specs por defecto
+      const nuevoId=Math.max(0,...Estado.productos.map(p=>p.id))+1;
+      Estado.productos.push({id:nuevoId, ...datos,
+        compat:compat([['Volkswagen','Golf'],['Seat','Ibiza']]),
+        specs:{'Referencia':ref,'Marca':datos.marca}});
+      Toast.exito('Producto añadido');
+    } else {
+      // Edición: mezcla con el existente (conserva compat y specs)
+      const p=Estado.producto(Admin.editandoId);
+      Object.assign(p, datos);
+      Toast.exito('Producto actualizado');
+    }
+    Estado.guardarProductos();
+    Admin.editandoId=null;
+    // Refresca todo lo que depende de productos
+    Catalogo.initFiltros(); Catalogo.render(); Ofertas.render();
+    Admin.render();
+  },
+  borrarProducto(id){
+    const p=Estado.producto(id);
+    if(!p) return;
+    if(!confirm(`¿Eliminar "${p.nombre}"? Esta acción no se puede deshacer.`)) return;
+    Estado.productos=Estado.productos.filter(x=>x.id!==id);
+    Estado.guardarProductos();
+    Catalogo.initFiltros(); Catalogo.render(); Ofertas.render();
+    Admin.render();
+    Toast.info('Producto eliminado');
+  },
+  cerrar(){
+    document.getElementById('modalAdmin').classList.remove('abierto');
+    document.getElementById('overlay').classList.remove('abierto');
+  }
+};
+
+/* =========================================================================
+   ============  ARRANQUE  =================================================
+   ========================================================================= */
+document.addEventListener('DOMContentLoaded', App.init);
+// Cierra el autocompletado al hacer clic fuera del buscador
+document.addEventListener('click', e=>{
+  if(!e.target.closest('.buscador')) document.getElementById('autocompletado').classList.add('oculto');
+});
+// Tecla ESC cierra cualquier panel/modal
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') App.cerrarTodo(); });
+</script>
+</body>
+</html>
